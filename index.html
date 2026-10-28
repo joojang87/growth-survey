@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>성장 코호트 보호자 설문</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=IBM+Plex+Mono&family=IBM+Plex+Sans+KR:wght@400;600&display=swap">
+<link rel="stylesheet" href="assets/css/style.css">
+<style>
+.wrap { max-width: 680px; margin: 0 auto; padding-block: 28px 40px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); display: flex; flex-direction: column; gap: 18px; }
+.wrap h1 { font-family: var(--f-display); font-weight: 400; font-size: 30px; margin: 0; text-wrap: balance; }
+.wrap h2 { font-family: var(--f-display); font-weight: 400; font-size: 21px; margin: 0; }
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; }
+.card { display: flex; flex-direction: column; gap: 8px; text-decoration: none; color: var(--ink); background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 18px; }
+.card:hover { border-color: var(--accent); }
+.card ul { margin: 0; padding-left: 18px; color: var(--muted); font-size: 14px; }
+.card .go { margin-top: auto; color: var(--accent); font-weight: 600; }
+.tool { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 18px; display: flex; flex-direction: column; gap: 12px; }
+.grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; }
+.grid2 label { display: flex; flex-direction: column; gap: 4px; font-size: 13.5px; color: var(--muted); }
+.out { font-family: var(--f-mono); font-size: 12.5px; word-break: break-all; background: var(--bg); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; min-height: 2.6em; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <p class="brand">성장·사춘기 파일럿 코호트 · 보호자 설문 v0.2 (CRF 자료사전 v0.2)</p>
+  <h1>보호자 설문</h1>
+  <p class="lead">연구진용 시작 페이지입니다. 보호자에게는 아래 "보호자용 링크 만들기"로 만든 개별 링크를 보내 주세요.</p>
+  <div class="cards">
+    <a class="card" href="baseline.html">
+      <span class="eyebrow">등록 시 1회 · 약 20–25분</span>
+      <h2>첫 방문 설문</h2>
+      <ul><li>아이 몸의 변화</li><li>태어날 때와 아기 때, 가족, 가정·생활 환경, 건강기능식품</li><li>잠, 화면, 활동, 먹는 것, 연 1회 척도</li></ul>
+      <span class="go">열기 →</span>
+    </a>
+    <a class="card" href="followup.html">
+      <span class="eyebrow">3개월마다 · 약 10분</span>
+      <h2>정기 설문</h2>
+      <ul><li>아이 몸의 변화</li><li>지난 7일의 잠, 화면, 활동, 먹는 것</li><li>지난 방문 이후의 변화, 12·24·36개월에 연 1회 척도</li></ul>
+      <span class="go">열기 →</span>
+    </a>
+  </div>
+
+  <section class="tool" aria-labelledby="lt">
+    <h2 id="lt">보호자용 링크 만들기</h2>
+    <p class="help" style="margin:0">연구 번호·참여 코드·방문 차수가 미리 채워진 링크를 만듭니다. 참여 코드는 Google 시트의 participants 탭에 있습니다. 이름은 링크에 넣지 마세요.</p>
+    <div class="grid2">
+      <label>설문<select id="f"><option value="baseline">첫 방문</option><option value="followup">정기</option></select></label>
+      <label>연구 번호<input id="pid" type="text" placeholder="GP-007" autocomplete="off"></label>
+      <label>참여 코드<input id="code" type="text" placeholder="시트 participants 탭" autocomplete="off"></label>
+      <label>방문(개월)<select id="v"><option value="">—</option><option>3</option><option>6</option><option>9</option><option>12</option><option>15</option><option>18</option><option>21</option><option>24</option><option>27</option><option>30</option><option>33</option><option>36</option></select></label>
+      <label>성별<select id="sx"><option value="">—</option><option>남아</option><option>여아</option></select></label>
+    </div>
+    <div id="out" class="out" aria-live="polite"></div>
+    <div class="row wrap"><button type="button" class="btn primary" id="copy">링크 복사</button></div>
+  </section>
+  <p class="muted">설정·배포·응답 저장 방법은 저장소의 README.md를 보세요.</p>
+</div>
+<script>
+(function () {
+  const $ = id => document.getElementById(id);
+  const base = location.href.replace(/[^/]*$/, '');
+  function build() {
+    const p = new URLSearchParams();
+    if ($('pid').value.trim()) p.set('id', $('pid').value.trim().toUpperCase());
+    if ($('code').value.trim()) p.set('c', $('code').value.trim().toUpperCase());
+    if ($('f').value === 'followup' && $('v').value) p.set('v', $('v').value);
+    if ($('sx').value) p.set('sex', $('sx').value);
+    $('v').disabled = $('f').value !== 'followup';
+    const q = p.toString();
+    $('out').textContent = base + $('f').value + '.html' + (q ? '?' + q : '');
+  }
+  ['f', 'pid', 'code', 'v', 'sx'].forEach(id => $(id).addEventListener('input', build));
+  $('copy').addEventListener('click', () => {
+    const t = $('out').textContent;
+    navigator.clipboard.writeText(t).then(() => { $('copy').textContent = '복사됨'; setTimeout(() => $('copy').textContent = '링크 복사', 1500); },
+      () => { const r = document.createRange(); r.selectNodeContents($('out')); const s = getSelection(); s.removeAllRanges(); s.addRange(r); });
+  });
+  build();
+})();
+</script>
+</body>
+</html>

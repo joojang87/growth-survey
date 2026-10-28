@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>정기 설문 · 성장·사춘기 코호트</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=IBM+Plex+Mono&family=IBM+Plex+Sans+KR:wght@400;600&display=swap">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body data-form="followup">
+<div class="app">
+  <div class="topbar">
+    <div class="toprow">
+      <div>
+        <p class="brand">성장·사춘기 코호트 <span class="demo-tag">· 시제품</span></p>
+        <h1 class="formname">정기 설문 <span class="muted">· 3개월마다</span></h1>
+      </div>
+      <label class="switch"><input type="checkbox" id="rview"> 연구진 보기</label>
+    </div>
+    <div class="stepline">
+      <span id="step"></span>
+      <button type="button" id="tocbtn" aria-label="목차 열기"><span id="secname"></span><span aria-hidden="true">▾</span></button>
+      <span id="count"></span>
+    </div>
+    <div class="track"><div id="bar"></div></div>
+  </div>
+  <p id="draftnote" class="draftnote" hidden>이 기기에 저장된 작성 중인 응답을 불러왔습니다. <button type="button" id="restart" class="link">처음부터 새로 작성</button></p>
+  <div id="toc" hidden><div id="toclist"></div></div>
+  <main id="main" aria-live="polite"></main>
+  <nav class="navbar">
+    <button type="button" class="btn" id="prev">이전</button>
+    <button type="button" class="btn primary" id="next">다음</button>
+  </nav>
+</div>
+<script src="assets/js/config.js"></script>
+<script src="assets/js/questions.js"></script>
+<script src="assets/js/flatten.js"></script>
+<script src="assets/js/survey.js"></script>
+</body>
+</html>

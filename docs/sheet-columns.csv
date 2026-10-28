@@ -1,0 +1,271 @@
+﻿form,column,question_id,question,section
+baseline,respondent,respondent,"응답하시는 분은 아이와 어떤 관계인가요?",시작하기
+baseline,child_sex,child_sex,"아이의 성별",시작하기
+baseline,signs,signs,"지금 아이 몸에서 보이는 변화가 있나요?",아이 몸의 변화
+baseline,signs_when,signs_when,"언제쯤부터 보였나요?",아이 몸의 변화
+baseline,gest_weeks,gest_weeks,"임신 몇 주에 태어났나요?",태어날 때와 아기 때
+baseline,birth_weight,birth_weight,"태어날 때 몸무게",태어날 때와 아기 때
+baseline,birth_length,birth_length,"태어날 때 키",태어날 때와 아기 때
+baseline,multiple_birth,multiple_birth,"쌍둥이 이상으로 태어났나요?",태어날 때와 아기 때
+baseline,feeding_6mo,feeding_6mo,"생후 6개월까지 주로 어떻게 먹였나요?",태어날 때와 아기 때
+baseline,parent_height_father,parent_height,"부모님의 키",가족
+baseline,parent_height_mother,parent_height,"부모님의 키",가족
+baseline,parent_height_src,parent_height_src,"위의 키는",가족
+baseline,parent_weight_father,parent_weight,"부모님의 현재 몸무게",가족
+baseline,parent_weight_mother,parent_weight,"부모님의 현재 몸무게",가족
+baseline,mother_menarche,mother_menarche,"어머니의 첫 생리(초경) 나이",가족
+baseline,mother_menarche_grade,mother_menarche_grade,"나이가 기억나지 않으면, 몇 학년 때였나요?",가족
+baseline,parent_timing_father,parent_timing,"부모님의 사춘기는 또래에 비해 어땠나요?",가족
+baseline,parent_timing_mother,parent_timing,"부모님의 사춘기는 또래에 비해 어땠나요?",가족
+baseline,sibling_cpp,sibling_cpp,"형제자매 중 성조숙증 진단이나 치료를 받은 아이가 있나요?",가족
+baseline,sibling_cpp_who,sibling_cpp_who,"누가, 몇 살 때인가요?",가족
+baseline,parent_edu_father,parent_edu,"부모님의 최종 학력",가정 환경
+baseline,parent_edu_mother,parent_edu,"부모님의 최종 학력",가정 환경
+baseline,caregiver,caregiver,"평일 낮에 아이를 주로 돌보는 분",가정 환경
+baseline,dual_income,dual_income,"부모님이 모두 일을 하시나요?",가정 환경
+baseline,income,income,"한 달 가구 소득",가정 환경
+baseline,family_structure,family_structure,"아이와 함께 사는 가족",가정 환경
+baseline,prenatal_smoke,prenatal_smoke,"임신 중 담배 연기에 노출된 적이 있나요?",생활 환경
+baseline,home_smoke,home_smoke,"집 안이나 차 안에서 아이 가까이 담배를 피우는 사람이 있나요?",생활 환경
+baseline,plastic_micro,plastic_micro,"아이 음식을 플라스틱 용기째 전자레인지에 데우는 일",생활 환경
+baseline,essential_oil,essential_oil,"라벤더·티트리 오일이 들어간 로션, 샴푸, 디퓨저를 아이에게 쓰나요?",생활 환경
+baseline,essential_oil_what,essential_oil_what,"어떤 제품인가요?",생활 환경
+baseline,child_cosmetics,child_cosmetics,"어린이 화장품·매니큐어·향수를 쓰나요?",생활 환경
+baseline,supplements,supplements,"지금 먹거나 먹은 적이 있는 것",건강기능식품·한약
+baseline,supplements_json,supplements,"지금 먹거나 먹은 적이 있는 것",건강기능식품·한약
+baseline,sleep_onset_wd,sleep_onset,"실제로 잠드는 시각",잠
+baseline,sleep_onset_we,sleep_onset,"실제로 잠드는 시각",잠
+baseline,wake_time_wd,wake_time,"아침에 일어나는 시각",잠
+baseline,wake_time_we,wake_time,"아침에 일어나는 시각",잠
+baseline,nap_days,nap_days,"낮잠을 잔 날",잠
+baseline,nap_min,nap_min,"낮잠은 한 번에 보통 몇 분 잤나요?",잠
+baseline,waking_nights,waking_nights,"자다가 깬 밤은 며칠이었나요?",잠
+baseline,waking_count,waking_count,"깬 밤에는 보통 몇 번 깼나요?",잠
+baseline,snore_freq,snore_freq,"코를 고는 밤",잠
+baseline,apnea_seen,apnea_seen,"자다가 숨을 멈추거나 헐떡이는 것을 본 적이 있나요?",잠
+baseline,mouth_breath,mouth_breath,"입을 벌리고 자거나 입으로 숨을 쉬나요?",잠
+baseline,room_light,room_light,"잘 때 방의 불빛",잠
+baseline,device_bedroom,device_bedroom,"아이가 자는 방에 있는 것",잠
+baseline,cosleep,cosleep,"아이는 보통 어디서 자나요?",잠
+baseline,own_phone,own_phone,"아이 전용 휴대폰이 있나요?",휴대폰과 화면
+baseline,own_phone_age_y,own_phone_age,"처음 갖게 된 나이",휴대폰과 화면
+baseline,own_phone_age_m,own_phone_age,"처음 갖게 된 나이",휴대폰과 화면
+baseline,own_phone_st,own_phone_st,"아이 휴대폰의 지난 7일 하루 평균 사용시간",휴대폰과 화면
+baseline,own_phone_st_src,own_phone_st_src,"위 시간은",휴대폰과 화면
+baseline,tablet,tablet,"아이가 쓰는 태블릿(아이패드 등)",휴대폰과 화면
+baseline,tablet_min_wd,tablet_min,"태블릿 하루 평균 사용시간",휴대폰과 화면
+baseline,tablet_min_we,tablet_min,"태블릿 하루 평균 사용시간",휴대폰과 화면
+baseline,tablet_src,tablet_src,"위 시간은",휴대폰과 화면
+baseline,parent_phone_wd,parent_phone,"아이가 부모님 휴대폰을 빌려 쓴 시간 (하루 평균)",휴대폰과 화면
+baseline,parent_phone_we,parent_phone,"아이가 부모님 휴대폰을 빌려 쓴 시간 (하루 평균)",휴대폰과 화면
+baseline,tv_wd,tv,"TV 시청 (하루 평균)",휴대폰과 화면
+baseline,tv_we,tv,"TV 시청 (하루 평균)",휴대폰과 화면
+baseline,game_pc_wd,game_pc,"게임기·컴퓨터 (하루 평균)",휴대폰과 화면
+baseline,game_pc_we,game_pc,"게임기·컴퓨터 (하루 평균)",휴대폰과 화면
+baseline,prebed_1h_wd,prebed_1h,"잠들기 전 1시간 동안 화면을 본 시간",휴대폰과 화면
+baseline,prebed_1h_we,prebed_1h,"잠들기 전 1시간 동안 화면을 본 시간",휴대폰과 화면
+baseline,house_rules,house_rules,"집에서 정한 사용 규칙이 있나요? (시간 제한, 자기 전 금지 등)",휴대폰과 화면
+baseline,mvpa_days,mvpa_days,"숨이 차거나 땀이 날 만큼 움직인 시간이 하루 합쳐 60분 이상이었던 날",몸을 움직이는 시간
+baseline,outdoor_wd,outdoor,"바깥(실외)에서 노는 시간 (하루 평균)",몸을 움직이는 시간
+baseline,outdoor_we,outdoor,"바깥(실외)에서 노는 시간 (하루 평균)",몸을 움직이는 시간
+baseline,sport_grid_n,sport_grid,"정기적으로 하는 운동",몸을 움직이는 시간
+baseline,sport_grid_json,sport_grid,"정기적으로 하는 운동",몸을 움직이는 시간
+baseline,commute,commute,"유치원·학교에 오가는 방법",몸을 움직이는 시간
+baseline,commute_min,commute_min,"걷거나 자전거로 오가는 시간 (하루 합계)",몸을 움직이는 시간
+baseline,study_sitting,study_sitting,"학원·학습지·숙제처럼 앉아서 공부하는 시간 (평일 하루 평균)",몸을 움직이는 시간
+baseline,breakfast_days,breakfast_days,"아침을 먹은 날",먹는 것
+baseline,ssb,ssb,"단 음료를 마신 총 잔 수",먹는 것
+baseline,dairy,dairy,"흰 우유·치즈·요구르트 (하루 평균)",먹는 것
+baseline,red_meat,red_meat,"소고기·돼지고기 요리",먹는 것
+baseline,processed_meat,processed_meat,"햄·소시지·베이컨·너겟",먹는 것
+baseline,fried_fast,fried_fast,"튀김·패스트푸드·배달음식",먹는 것
+baseline,instant,instant,"라면 등 인스턴트 식품",먹는 것
+baseline,soy,soy,"두유·두부·콩 음식",먹는 것
+baseline,fruit,fruit,"과일 (하루 평균)",먹는 것
+baseline,veg,veg,"채소 반찬 (끼니 기준, 하루 평균)",먹는 것
+baseline,sweets,sweets,"과자·사탕·초콜릿·빵",먹는 것
+baseline,late_snack,late_snack,"저녁 식사 후 야식을 먹은 날",먹는 것
+baseline,NIA_SAS_child_1,NIA_SAS_child,"스마트폰 사용 (스마트폰 과의존 척도, 유아동 관찰자용)",1년에 한 번 하는 질문
+baseline,NIA_SAS_child_2,NIA_SAS_child,"스마트폰 사용 (스마트폰 과의존 척도, 유아동 관찰자용)",1년에 한 번 하는 질문
+baseline,NIA_SAS_child_3,NIA_SAS_child,"스마트폰 사용 (스마트폰 과의존 척도, 유아동 관찰자용)",1년에 한 번 하는 질문
+baseline,NIA_SAS_child_4,NIA_SAS_child,"스마트폰 사용 (스마트폰 과의존 척도, 유아동 관찰자용)",1년에 한 번 하는 질문
+baseline,NIA_SAS_child_5,NIA_SAS_child,"스마트폰 사용 (스마트폰 과의존 척도, 유아동 관찰자용)",1년에 한 번 하는 질문
+baseline,NIA_SAS_child_6,NIA_SAS_child,"스마트폰 사용 (스마트폰 과의존 척도, 유아동 관찰자용)",1년에 한 번 하는 질문
+baseline,NIA_SAS_child_7,NIA_SAS_child,"스마트폰 사용 (스마트폰 과의존 척도, 유아동 관찰자용)",1년에 한 번 하는 질문
+baseline,NIA_SAS_child_8,NIA_SAS_child,"스마트폰 사용 (스마트폰 과의존 척도, 유아동 관찰자용)",1년에 한 번 하는 질문
+baseline,NIA_SAS_child_9,NIA_SAS_child,"스마트폰 사용 (스마트폰 과의존 척도, 유아동 관찰자용)",1년에 한 번 하는 질문
+baseline,CSHQ_1,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
+baseline,CSHQ_2,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
+baseline,CSHQ_3,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
+baseline,CSHQ_4,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
+baseline,CSHQ_5,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
+baseline,CSHQ_6,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
+baseline,CSHQ_7,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
+baseline,CSHQ_8,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
+baseline,CSHQ_9,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
+baseline,CSHQ_10,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
+baseline,CSHQ_11,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
+baseline,CSHQ_12,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
+baseline,CSHQ_13,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
+baseline,CSHQ_14,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
+baseline,CSHQ_15,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
+baseline,CSHQ_16,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
+baseline,CSHQ_17,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
+baseline,CSHQ_18,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
+baseline,CSHQ_19,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
+baseline,CSHQ_20,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
+baseline,CSHQ_21,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
+baseline,CSHQ_22,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
+baseline,CSHQ_23,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
+baseline,CSHQ_24,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
+baseline,CSHQ_25,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
+baseline,CSHQ_26,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
+baseline,CSHQ_27,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
+baseline,CSHQ_28,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
+baseline,CSHQ_29,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
+baseline,CSHQ_30,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
+baseline,CSHQ_31,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
+baseline,CSHQ_32,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
+baseline,CSHQ_33,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
+baseline,NQ_C_1,NQ_C,"아이의 식생활 (어린이 영양지수 NQ)",1년에 한 번 하는 질문
+baseline,NQ_C_2,NQ_C,"아이의 식생활 (어린이 영양지수 NQ)",1년에 한 번 하는 질문
+baseline,NQ_C_3,NQ_C,"아이의 식생활 (어린이 영양지수 NQ)",1년에 한 번 하는 질문
+baseline,NQ_C_4,NQ_C,"아이의 식생활 (어린이 영양지수 NQ)",1년에 한 번 하는 질문
+baseline,NQ_C_5,NQ_C,"아이의 식생활 (어린이 영양지수 NQ)",1년에 한 번 하는 질문
+baseline,NQ_C_6,NQ_C,"아이의 식생활 (어린이 영양지수 NQ)",1년에 한 번 하는 질문
+baseline,NQ_C_7,NQ_C,"아이의 식생활 (어린이 영양지수 NQ)",1년에 한 번 하는 질문
+baseline,NQ_C_8,NQ_C,"아이의 식생활 (어린이 영양지수 NQ)",1년에 한 번 하는 질문
+baseline,NQ_C_9,NQ_C,"아이의 식생활 (어린이 영양지수 NQ)",1년에 한 번 하는 질문
+baseline,NQ_C_10,NQ_C,"아이의 식생활 (어린이 영양지수 NQ)",1년에 한 번 하는 질문
+baseline,NQ_C_11,NQ_C,"아이의 식생활 (어린이 영양지수 NQ)",1년에 한 번 하는 질문
+baseline,NQ_C_12,NQ_C,"아이의 식생활 (어린이 영양지수 NQ)",1년에 한 번 하는 질문
+baseline,NQ_C_13,NQ_C,"아이의 식생활 (어린이 영양지수 NQ)",1년에 한 번 하는 질문
+baseline,NQ_C_14,NQ_C,"아이의 식생활 (어린이 영양지수 NQ)",1년에 한 번 하는 질문
+baseline,NQ_C_15,NQ_C,"아이의 식생활 (어린이 영양지수 NQ)",1년에 한 번 하는 질문
+baseline,NQ_C_16,NQ_C,"아이의 식생활 (어린이 영양지수 NQ)",1년에 한 번 하는 질문
+baseline,NQ_C_17,NQ_C,"아이의 식생활 (어린이 영양지수 NQ)",1년에 한 번 하는 질문
+baseline,NQ_C_18,NQ_C,"아이의 식생활 (어린이 영양지수 NQ)",1년에 한 번 하는 질문
+baseline,NQ_C_19,NQ_C,"아이의 식생활 (어린이 영양지수 NQ)",1년에 한 번 하는 질문
+followup,respondent,respondent,"응답하시는 분은 아이와 어떤 관계인가요?",시작하기
+followup,child_sex,child_sex,"아이의 성별",시작하기
+followup,signs,signs,"지난 방문 이후 아이 몸에서 새로 본 변화가 있나요?",아이 몸의 변화
+followup,signs_when,signs_when,"언제쯤부터 보였나요?",아이 몸의 변화
+followup,sleep_onset_wd,sleep_onset,"실제로 잠드는 시각",잠
+followup,sleep_onset_we,sleep_onset,"실제로 잠드는 시각",잠
+followup,wake_time_wd,wake_time,"아침에 일어나는 시각",잠
+followup,wake_time_we,wake_time,"아침에 일어나는 시각",잠
+followup,nap_days,nap_days,"낮잠을 잔 날",잠
+followup,nap_min,nap_min,"낮잠은 한 번에 보통 몇 분 잤나요?",잠
+followup,waking_nights,waking_nights,"자다가 깬 밤은 며칠이었나요?",잠
+followup,waking_count,waking_count,"깬 밤에는 보통 몇 번 깼나요?",잠
+followup,snore_freq,snore_freq,"코를 고는 밤",잠
+followup,apnea_seen,apnea_seen,"자다가 숨을 멈추거나 헐떡이는 것을 본 적이 있나요?",잠
+followup,mouth_breath,mouth_breath,"입을 벌리고 자거나 입으로 숨을 쉬나요?",잠
+followup,room_light,room_light,"잘 때 방의 불빛",잠
+followup,device_bedroom,device_bedroom,"아이가 자는 방에 있는 것",잠
+followup,cosleep,cosleep,"아이는 보통 어디서 자나요?",잠
+followup,own_phone,own_phone,"아이 전용 휴대폰이 있나요?",휴대폰과 화면
+followup,own_phone_new,own_phone_new,"지난 설문 이후 새로 생긴 휴대폰인가요?",휴대폰과 화면
+followup,own_phone_age_y,own_phone_age,"처음 갖게 된 나이",휴대폰과 화면
+followup,own_phone_age_m,own_phone_age,"처음 갖게 된 나이",휴대폰과 화면
+followup,own_phone_st,own_phone_st,"아이 휴대폰의 지난 7일 하루 평균 사용시간",휴대폰과 화면
+followup,own_phone_st_src,own_phone_st_src,"위 시간은",휴대폰과 화면
+followup,tablet,tablet,"아이가 쓰는 태블릿(아이패드 등)",휴대폰과 화면
+followup,tablet_min_wd,tablet_min,"태블릿 하루 평균 사용시간",휴대폰과 화면
+followup,tablet_min_we,tablet_min,"태블릿 하루 평균 사용시간",휴대폰과 화면
+followup,tablet_src,tablet_src,"위 시간은",휴대폰과 화면
+followup,parent_phone_wd,parent_phone,"아이가 부모님 휴대폰을 빌려 쓴 시간 (하루 평균)",휴대폰과 화면
+followup,parent_phone_we,parent_phone,"아이가 부모님 휴대폰을 빌려 쓴 시간 (하루 평균)",휴대폰과 화면
+followup,tv_wd,tv,"TV 시청 (하루 평균)",휴대폰과 화면
+followup,tv_we,tv,"TV 시청 (하루 평균)",휴대폰과 화면
+followup,game_pc_wd,game_pc,"게임기·컴퓨터 (하루 평균)",휴대폰과 화면
+followup,game_pc_we,game_pc,"게임기·컴퓨터 (하루 평균)",휴대폰과 화면
+followup,prebed_1h_wd,prebed_1h,"잠들기 전 1시간 동안 화면을 본 시간",휴대폰과 화면
+followup,prebed_1h_we,prebed_1h,"잠들기 전 1시간 동안 화면을 본 시간",휴대폰과 화면
+followup,house_rules,house_rules,"집에서 정한 사용 규칙이 있나요? (시간 제한, 자기 전 금지 등)",휴대폰과 화면
+followup,mvpa_days,mvpa_days,"숨이 차거나 땀이 날 만큼 움직인 시간이 하루 합쳐 60분 이상이었던 날",몸을 움직이는 시간
+followup,outdoor_wd,outdoor,"바깥(실외)에서 노는 시간 (하루 평균)",몸을 움직이는 시간
+followup,outdoor_we,outdoor,"바깥(실외)에서 노는 시간 (하루 평균)",몸을 움직이는 시간
+followup,sport_grid_n,sport_grid,"정기적으로 하는 운동",몸을 움직이는 시간
+followup,sport_grid_json,sport_grid,"정기적으로 하는 운동",몸을 움직이는 시간
+followup,commute,commute,"유치원·학교에 오가는 방법",몸을 움직이는 시간
+followup,commute_min,commute_min,"걷거나 자전거로 오가는 시간 (하루 합계)",몸을 움직이는 시간
+followup,study_sitting,study_sitting,"학원·학습지·숙제처럼 앉아서 공부하는 시간 (평일 하루 평균)",몸을 움직이는 시간
+followup,breakfast_days,breakfast_days,"아침을 먹은 날",먹는 것
+followup,ssb,ssb,"단 음료를 마신 총 잔 수",먹는 것
+followup,dairy,dairy,"흰 우유·치즈·요구르트 (하루 평균)",먹는 것
+followup,red_meat,red_meat,"소고기·돼지고기 요리",먹는 것
+followup,processed_meat,processed_meat,"햄·소시지·베이컨·너겟",먹는 것
+followup,fried_fast,fried_fast,"튀김·패스트푸드·배달음식",먹는 것
+followup,instant,instant,"라면 등 인스턴트 식품",먹는 것
+followup,soy,soy,"두유·두부·콩 음식",먹는 것
+followup,fruit,fruit,"과일 (하루 평균)",먹는 것
+followup,veg,veg,"채소 반찬 (끼니 기준, 하루 평균)",먹는 것
+followup,sweets,sweets,"과자·사탕·초콜릿·빵",먹는 것
+followup,late_snack,late_snack,"저녁 식사 후 야식을 먹은 날",먹는 것
+followup,supp_change,supp_change,"건강기능식품이나 한약을 새로 시작하거나 끊었나요?",지난 방문 이후
+followup,supp_change_what,supp_change_what,"무엇을, 언제부터(언제까지)?",지난 방문 이후
+followup,illness,illness,"입원하거나 크게 아팠던 적, 새로 먹기 시작한 약이 있나요?",지난 방문 이후
+followup,illness_what,illness_what,"어떤 일이었나요?",지난 방문 이후
+followup,life_event,life_event,"생활에 큰 변화가 있었나요?",지난 방문 이후
+followup,NIA_SAS_child_1,NIA_SAS_child,"스마트폰 사용 (스마트폰 과의존 척도, 유아동 관찰자용)",1년에 한 번 하는 질문
+followup,NIA_SAS_child_2,NIA_SAS_child,"스마트폰 사용 (스마트폰 과의존 척도, 유아동 관찰자용)",1년에 한 번 하는 질문
+followup,NIA_SAS_child_3,NIA_SAS_child,"스마트폰 사용 (스마트폰 과의존 척도, 유아동 관찰자용)",1년에 한 번 하는 질문
+followup,NIA_SAS_child_4,NIA_SAS_child,"스마트폰 사용 (스마트폰 과의존 척도, 유아동 관찰자용)",1년에 한 번 하는 질문
+followup,NIA_SAS_child_5,NIA_SAS_child,"스마트폰 사용 (스마트폰 과의존 척도, 유아동 관찰자용)",1년에 한 번 하는 질문
+followup,NIA_SAS_child_6,NIA_SAS_child,"스마트폰 사용 (스마트폰 과의존 척도, 유아동 관찰자용)",1년에 한 번 하는 질문
+followup,NIA_SAS_child_7,NIA_SAS_child,"스마트폰 사용 (스마트폰 과의존 척도, 유아동 관찰자용)",1년에 한 번 하는 질문
+followup,NIA_SAS_child_8,NIA_SAS_child,"스마트폰 사용 (스마트폰 과의존 척도, 유아동 관찰자용)",1년에 한 번 하는 질문
+followup,NIA_SAS_child_9,NIA_SAS_child,"스마트폰 사용 (스마트폰 과의존 척도, 유아동 관찰자용)",1년에 한 번 하는 질문
+followup,CSHQ_1,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
+followup,CSHQ_2,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
+followup,CSHQ_3,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
+followup,CSHQ_4,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
+followup,CSHQ_5,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
+followup,CSHQ_6,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
+followup,CSHQ_7,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
+followup,CSHQ_8,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
+followup,CSHQ_9,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
+followup,CSHQ_10,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
+followup,CSHQ_11,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
+followup,CSHQ_12,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
+followup,CSHQ_13,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
+followup,CSHQ_14,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
+followup,CSHQ_15,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
+followup,CSHQ_16,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
+followup,CSHQ_17,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
+followup,CSHQ_18,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
+followup,CSHQ_19,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
+followup,CSHQ_20,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
+followup,CSHQ_21,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
+followup,CSHQ_22,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
+followup,CSHQ_23,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
+followup,CSHQ_24,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
+followup,CSHQ_25,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
+followup,CSHQ_26,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
+followup,CSHQ_27,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
+followup,CSHQ_28,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
+followup,CSHQ_29,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
+followup,CSHQ_30,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
+followup,CSHQ_31,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
+followup,CSHQ_32,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
+followup,CSHQ_33,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
+followup,NQ_C_1,NQ_C,"아이의 식생활 (어린이 영양지수 NQ)",1년에 한 번 하는 질문
+followup,NQ_C_2,NQ_C,"아이의 식생활 (어린이 영양지수 NQ)",1년에 한 번 하는 질문
+followup,NQ_C_3,NQ_C,"아이의 식생활 (어린이 영양지수 NQ)",1년에 한 번 하는 질문
+followup,NQ_C_4,NQ_C,"아이의 식생활 (어린이 영양지수 NQ)",1년에 한 번 하는 질문
+followup,NQ_C_5,NQ_C,"아이의 식생활 (어린이 영양지수 NQ)",1년에 한 번 하는 질문
+followup,NQ_C_6,NQ_C,"아이의 식생활 (어린이 영양지수 NQ)",1년에 한 번 하는 질문
+followup,NQ_C_7,NQ_C,"아이의 식생활 (어린이 영양지수 NQ)",1년에 한 번 하는 질문
+followup,NQ_C_8,NQ_C,"아이의 식생활 (어린이 영양지수 NQ)",1년에 한 번 하는 질문
+followup,NQ_C_9,NQ_C,"아이의 식생활 (어린이 영양지수 NQ)",1년에 한 번 하는 질문
+followup,NQ_C_10,NQ_C,"아이의 식생활 (어린이 영양지수 NQ)",1년에 한 번 하는 질문
+followup,NQ_C_11,NQ_C,"아이의 식생활 (어린이 영양지수 NQ)",1년에 한 번 하는 질문
+followup,NQ_C_12,NQ_C,"아이의 식생활 (어린이 영양지수 NQ)",1년에 한 번 하는 질문
+followup,NQ_C_13,NQ_C,"아이의 식생활 (어린이 영양지수 NQ)",1년에 한 번 하는 질문
+followup,NQ_C_14,NQ_C,"아이의 식생활 (어린이 영양지수 NQ)",1년에 한 번 하는 질문
+followup,NQ_C_15,NQ_C,"아이의 식생활 (어린이 영양지수 NQ)",1년에 한 번 하는 질문
+followup,NQ_C_16,NQ_C,"아이의 식생활 (어린이 영양지수 NQ)",1년에 한 번 하는 질문
+followup,NQ_C_17,NQ_C,"아이의 식생활 (어린이 영양지수 NQ)",1년에 한 번 하는 질문
+followup,NQ_C_18,NQ_C,"아이의 식생활 (어린이 영양지수 NQ)",1년에 한 번 하는 질문
+followup,NQ_C_19,NQ_C,"아이의 식생활 (어린이 영양지수 NQ)",1년에 한 번 하는 질문
