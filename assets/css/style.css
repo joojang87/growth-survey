@@ -156,3 +156,10 @@ select { width: 100%; }
 main > .row.wrap .btn { flex: 1 1 10em; }
 .q[data-id="_sleep_calc"] { background: none; border: 0; padding: 0; }
 .errline { margin: 0; color: var(--danger); font-size: 14px; font-weight: 600; }
+
+/* 척도 원응답 입력(scales.html) */
+.subq.scale.grid { display: flex; flex-direction: row; align-items: center; justify-content: space-between; gap: 8px 12px; flex-wrap: wrap; padding-top: 8px; }
+.subq.scale.grid .lab { flex: 1 1 150px; color: var(--ink); font-size: 14.5px; }
+.subq.scale.grid .chips { flex: 0 0 auto; }
+body.staff .meta-line { display: block; }
+input[type="date"] { font: inherit; padding: 10px 12px; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); color: var(--ink); }

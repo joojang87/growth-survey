@@ -13,18 +13,19 @@ const { SECTIONS } = ctx.window.SURVEY;
 const CFG = ctx.window.SURVEY_CONFIG;
 const { columnsFor, columnsOf } = require(path.join(R, 'assets/js/flatten.js'));
 
-const COLUMNS = { baseline: columnsFor(SECTIONS, 'baseline'), followup: columnsFor(SECTIONS, 'followup') };
+const FORMS = ['baseline', 'followup', 'scales'];
+const COLUMNS = Object.fromEntries(FORMS.map(f => [f, columnsFor(SECTIONS, f)]));
 const tpl = fs.readFileSync(path.join(R, 'tools/Code.template.gs'), 'utf8');
 const gs = tpl.replace('{{COLUMNS}}', JSON.stringify(COLUMNS, null, 2)).split('{{FORM_VERSION}}').join(CFG.FORM_VERSION);
 fs.mkdirSync(path.join(R, 'backend'), { recursive: true });
 fs.writeFileSync(path.join(R, 'backend/Code.gs'), gs);
 
 const lines = ['form,column,question_id,question,section'];
-['baseline', 'followup'].forEach(form => SECTIONS.filter(s => s.forms.includes(form)).forEach(sec =>
+FORMS.forEach(form => SECTIONS.filter(s => s.forms.includes(form)).forEach(sec =>
   sec.qs.filter(q => !q.forms || q.forms.includes(form)).forEach(q => columnsOf(q).forEach(c => {
     const qt = typeof q.q === 'object' ? q.q[form] : q.q;
-    lines.push([form, c, q.id, `"${String(qt).replace(/"/g, '""')}"`, sec.title].join(','));
+    lines.push([form, c, q.id, `"${String(qt ?? '').replace(/"/g, '""')}"`, sec.title].join(','));
   }))));
 fs.mkdirSync(path.join(R, 'docs'), { recursive: true });
 fs.writeFileSync(path.join(R, 'docs/sheet-columns.csv'), '﻿' + lines.join('\n'));
-console.log(`baseline ${COLUMNS.baseline.length}열, followup ${COLUMNS.followup.length}열 → backend/Code.gs, docs/sheet-columns.csv`);
+console.log(FORMS.map(f => `${f} ${COLUMNS[f].length}열`).join(', ') + ' → backend/Code.gs, docs/sheet-columns.csv');
