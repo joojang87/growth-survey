@@ -279,7 +279,7 @@ function fill(q, body) {
         h('p', { class: 'lab', text: '자동 채점 결과 (확인용 — 결측이 있으면 해당 점수는 비어 있음)' }),
         h('div', { class: 'pair' }, [show('스마트폰 총점', r.sod_total), show('스마트폰 군', r.sod_group)]),
         h('div', { class: 'pair' }, [show('CSHQ 총점', r.cshq_total), show('CSHQ 결측 문항', r.cshq_n_missing)]),
-        h('div', { class: 'pair' }, [show('NQ-C', r.nq_total), show('NQ 등급', r.nq_grade)]),
+        h('div', { class: 'pair' }, [show('NQ 결측 문항', r.nq_n_missing), show('NQ 점수', r.nq_total === '' ? '가중치 확보 전' : r.nq_total)]),
         h('p', { class: 'meta-line', text: `CSHQ 하위척도: 입면저항 ${r.cshq_br || '—'} · 입면지연 ${r.cshq_sol || '—'} · 수면량 ${r.cshq_dur || '—'} · 수면불안 ${r.cshq_anx || '—'} · 각성 ${r.cshq_nw || '—'} · 사건수면 ${r.cshq_para || '—'} · 호흡 ${r.cshq_sdb || '—'} · 주간졸림 ${r.cshq_ds || '—'}` }),
       ]));
       break;

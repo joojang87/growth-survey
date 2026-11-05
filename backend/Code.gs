@@ -1,5 +1,5 @@
 /**
- * 성장·사춘기 코호트 보호자 설문 — Google Apps Script 수신부 (v0.3)
+ * 성장·사춘기 코호트 보호자 설문 — Google Apps Script 수신부 (v0.4)
  *
  * 응답 저장용 Google 시트에서 '확장 프로그램 > Apps Script'를 열고 이 파일 전체를 붙여 넣습니다.
  * 아래 COLUMNS는 questions.js에서 자동 생성한 값입니다. 문항을 바꾸면 tools/make-backend.js로 다시 만드세요.
@@ -269,7 +269,6 @@ const COLUMNS = {
     "nq_17",
     "nq_18",
     "nq_19",
-    "nq_20",
     "sod_ctrl",
     "sod_sal",
     "sod_cons",
@@ -287,10 +286,8 @@ const COLUMNS = {
     "cshq_total_alt",
     "cshq_n_missing",
     "nq_bal",
-    "nq_div",
     "nq_mod",
     "nq_pra",
-    "nq_env",
     "nq_total",
     "nq_grade",
     "nq_n_missing"
@@ -337,7 +334,7 @@ function doPost(e) {
 }
 
 function doGet() {
-  return json_({ ok: true, msg: 'survey endpoint alive', version: '0.3' });
+  return json_({ ok: true, msg: 'survey endpoint alive', version: '0.4' });
 }
 
 /* ---------- 참여 코드 ---------- */

@@ -220,26 +220,25 @@ scales,cshq_49,cshq_f,"졸림 상황 (46~52)",2부 · 수면 습관 (2)
 scales,cshq_50,cshq_f,"졸림 상황 (46~52)",2부 · 수면 습관 (2)
 scales,cshq_51,cshq_f,"졸림 상황 (46~52)",2부 · 수면 습관 (2)
 scales,cshq_52,cshq_f,"졸림 상황 (46~52)",2부 · 수면 습관 (2)
-scales,nq_1,nq,"학령기 아동 영양지수(NQ-C)",3부 · 식생활
-scales,nq_2,nq,"학령기 아동 영양지수(NQ-C)",3부 · 식생활
-scales,nq_3,nq,"학령기 아동 영양지수(NQ-C)",3부 · 식생활
-scales,nq_4,nq,"학령기 아동 영양지수(NQ-C)",3부 · 식생활
-scales,nq_5,nq,"학령기 아동 영양지수(NQ-C)",3부 · 식생활
-scales,nq_6,nq,"학령기 아동 영양지수(NQ-C)",3부 · 식생활
-scales,nq_7,nq,"학령기 아동 영양지수(NQ-C)",3부 · 식생활
-scales,nq_8,nq,"학령기 아동 영양지수(NQ-C)",3부 · 식생활
-scales,nq_9,nq,"학령기 아동 영양지수(NQ-C)",3부 · 식생활
-scales,nq_10,nq,"학령기 아동 영양지수(NQ-C)",3부 · 식생활
-scales,nq_11,nq,"학령기 아동 영양지수(NQ-C)",3부 · 식생활
-scales,nq_12,nq,"학령기 아동 영양지수(NQ-C)",3부 · 식생활
-scales,nq_13,nq,"학령기 아동 영양지수(NQ-C)",3부 · 식생활
-scales,nq_14,nq,"학령기 아동 영양지수(NQ-C)",3부 · 식생활
-scales,nq_15,nq,"학령기 아동 영양지수(NQ-C)",3부 · 식생활
-scales,nq_16,nq,"학령기 아동 영양지수(NQ-C)",3부 · 식생활
-scales,nq_17,nq,"학령기 아동 영양지수(NQ-C)",3부 · 식생활
-scales,nq_18,nq,"학령기 아동 영양지수(NQ-C)",3부 · 식생활
-scales,nq_19,nq,"학령기 아동 영양지수(NQ-C)",3부 · 식생활
-scales,nq_20,nq,"학령기 아동 영양지수(NQ-C)",3부 · 식생활
+scales,nq_1,nq,"학령기 어린이 영양지수(NQ-C 개정판)",3부 · 식생활
+scales,nq_2,nq,"학령기 어린이 영양지수(NQ-C 개정판)",3부 · 식생활
+scales,nq_3,nq,"학령기 어린이 영양지수(NQ-C 개정판)",3부 · 식생활
+scales,nq_4,nq,"학령기 어린이 영양지수(NQ-C 개정판)",3부 · 식생활
+scales,nq_5,nq,"학령기 어린이 영양지수(NQ-C 개정판)",3부 · 식생활
+scales,nq_6,nq,"학령기 어린이 영양지수(NQ-C 개정판)",3부 · 식생활
+scales,nq_7,nq,"학령기 어린이 영양지수(NQ-C 개정판)",3부 · 식생활
+scales,nq_8,nq,"학령기 어린이 영양지수(NQ-C 개정판)",3부 · 식생활
+scales,nq_9,nq,"학령기 어린이 영양지수(NQ-C 개정판)",3부 · 식생활
+scales,nq_10,nq,"학령기 어린이 영양지수(NQ-C 개정판)",3부 · 식생활
+scales,nq_11,nq,"학령기 어린이 영양지수(NQ-C 개정판)",3부 · 식생활
+scales,nq_12,nq,"학령기 어린이 영양지수(NQ-C 개정판)",3부 · 식생활
+scales,nq_13,nq,"학령기 어린이 영양지수(NQ-C 개정판)",3부 · 식생활
+scales,nq_14,nq,"학령기 어린이 영양지수(NQ-C 개정판)",3부 · 식생활
+scales,nq_15,nq,"학령기 어린이 영양지수(NQ-C 개정판)",3부 · 식생활
+scales,nq_16,nq,"학령기 어린이 영양지수(NQ-C 개정판)",3부 · 식생활
+scales,nq_17,nq,"학령기 어린이 영양지수(NQ-C 개정판)",3부 · 식생활
+scales,nq_18,nq,"학령기 어린이 영양지수(NQ-C 개정판)",3부 · 식생활
+scales,nq_19,nq,"학령기 어린이 영양지수(NQ-C 개정판)",3부 · 식생활
 scales,sod_ctrl,_scores,"",3부 · 식생활
 scales,sod_sal,_scores,"",3부 · 식생활
 scales,sod_cons,_scores,"",3부 · 식생활
@@ -257,10 +256,8 @@ scales,cshq_total,_scores,"",3부 · 식생활
 scales,cshq_total_alt,_scores,"",3부 · 식생활
 scales,cshq_n_missing,_scores,"",3부 · 식생활
 scales,nq_bal,_scores,"",3부 · 식생활
-scales,nq_div,_scores,"",3부 · 식생활
 scales,nq_mod,_scores,"",3부 · 식생활
 scales,nq_pra,_scores,"",3부 · 식생활
-scales,nq_env,_scores,"",3부 · 식생활
 scales,nq_total,_scores,"",3부 · 식생활
 scales,nq_grade,_scores,"",3부 · 식생활
 scales,nq_n_missing,_scores,"",3부 · 식생활
