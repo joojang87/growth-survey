@@ -1,17 +1,18 @@
-# 성장·사춘기 코호트 보호자 설문 (v0.2)
+# 성장·사춘기 코호트 보호자 설문 (v0.3)
 
-건양대학교병원 소아청소년과 「디지털 행동, 생활습관 요인과 소아 성장/사춘기 변화의 연관성 평가를 위한 전향적 파일럿 코호트 연구」(IRB KYUH 2026-09-027)의 보호자용 모바일 설문입니다. 문항은 **CRF 자료사전 v0.2**(2026-10-21)와 1:1로 대응합니다.
+건양대학교병원 소아청소년과 「디지털 행동, 생활습관 요인과 소아 성장/사춘기 변화의 연관성 평가를 위한 전향적 파일럿 코호트 연구」(IRB KYUH 2026-09-027)의 보호자용 모바일 설문입니다. 문항은 **CRF 자료사전 v0.3**(2026-11-04)과 1:1로 대응합니다. 척도 3종은 보호자가 종이로 작성하고 연구진이 `scales.html`로 입력합니다.
 
 ## 구조
 
 ```
 보호자 휴대폰 ──▶ baseline.html / followup.html   (GitHub Pages: 화면만)
+연구진 PC     ──▶ scales.html (종이 척도 결과 입력)
                         │  POST (JSON, text/plain)
                         ▼
                  backend/Code.gs                    (Google Apps Script 웹 앱: 검증·저장)
                         │
                         ▼
-                 Google 시트                         탭: baseline_0.2 · followup_0.2 · participants
+                 Google 시트                         탭: baseline_0.3 · followup_0.3 · scales_0.3 · participants
 ```
 
 - GitHub에는 **화면(코드)만** 올라갑니다. 응답은 연구자 Google 계정의 시트에만 쌓입니다.
@@ -24,9 +25,11 @@
 index.html                 연구진용 시작 페이지 (설문 선택, 보호자용 링크 만들기)
 baseline.html              첫 방문 설문 (등록 시 1회)
 followup.html              정기 설문 (3개월마다)
+scales.html                첫 방문 척도 입력 (연구진용, 종이 설문지 결과)
 assets/js/config.js        설정 — 저장 주소, 키, 연구 번호 형식 등
 assets/js/questions.js     문항 정의 — 문항을 고칠 때는 이 파일만 수정
 assets/js/flatten.js       응답 → 시트 열 변환 규칙
+assets/js/scoring.js       척도 자동 채점 (스마트폰 과의존·CSHQ·NQ-C)
 assets/js/survey.js        설문 동작
 assets/css/style.css       디자인
 backend/Code.gs            Google Apps Script 수신부 (tools/make-backend.js가 생성)
@@ -61,7 +64,7 @@ CHANGELOG.md               문항 변경 이력
 
 ### C. 동작 확인
 1. `index.html`의 "보호자용 링크 만들기"에 `GP-150`과 그 참여 코드를 넣어 링크를 만듭니다.
-2. 휴대폰으로 열어 시험 응답을 제출하고, 접수번호가 보이는지, 시트의 `followup_0.2` 탭에 행이 생겼는지 확인합니다.
+2. 휴대폰으로 열어 시험 응답을 제출하고, 접수번호가 보이는지, 시트의 `followup_0.3` 탭에 행이 생겼는지 확인합니다. `scales.html`도 같은 번호로 한 번 시험합니다(`scales_0.3` 탭).
 3. 시험 행을 지우고, `participants` 탭에서 GP-150의 `active`를 `FALSE`로 바꿔 둡니다.
 
 ## 보호자에게 보내는 링크
@@ -83,7 +86,7 @@ https://<계정>.github.io/growth-survey/followup.html?id=GP-007&c=K7Q2MX&v=6&se
 
 ## 시트에 저장되는 방식
 
-- 탭 이름은 `설문종류_버전`입니다(`baseline_0.2`, `followup_0.2`). `FORM_VERSION`을 올리면 새 탭이 생겨 버전이 다른 응답의 열이 섞이지 않습니다.
+- 탭 이름은 `설문종류_버전`입니다(`baseline_0.3`, `followup_0.3`, `scales_0.3`). `FORM_VERSION`을 올리면 새 탭이 생겨 버전이 다른 응답의 열이 섞이지 않습니다.
 - 응답 1건 = 1행. 앞쪽 고정 열: `receipt`(접수번호), `server_time`, `form`, `form_version`, `participant_id`, `visit_month`, `started_at`, `submitted_at`, `duplicate_of`.
 - 문항 열은 `docs/sheet-columns.csv`를 보세요. 한 문항이 여러 칸이면 접미사를 붙입니다(주중·주말 `_wd`/`_we`, 아버지·어머니 `_father`/`_mother`, 척도 `_1`…`_n`, 운동은 개수 `_n`과 상세 `_json`).
 - 마지막 `raw_json` 열에 응답 원자료 전체를 남겨 둡니다.
@@ -110,11 +113,16 @@ https://<계정>.github.io/growth-survey/followup.html?id=GP-007&c=K7Q2MX&v=6&se
 3. `config.js`의 `FORM_VERSION`을 올리고, 자료사전과 `CHANGELOG.md`도 고칩니다.
 4. Apps Script 편집기에 새 `Code.gs`를 붙여 넣고(맨 위 `STUDY_KEY` 다시 입력), **배포 관리 → 편집 → 새 버전**으로 재배포합니다. 웹 앱 URL은 그대로입니다.
 
-척도 3종(스마트폰 과의존, CSHQ, NQ)은 원문 자리만 있습니다. `questions.js`의 해당 문항 `items: []`에 원문을 넣으면 표시됩니다.
-- 스마트폰 과의존 척도: 공공누리 제4유형(출처표시·비상업·변경금지). 원문 9문항을 고치지 말고 그대로.
-- CSHQ: 개발자(Owens) 허락 후 번역 문항 사용.
-- NQ: 한국영양학회 아동용 원문과 문항별 보기 확인.
-- 공개 저장소에 올리면 척도 원문도 공개됩니다.
+## 첫 방문 척도 (v0.3)
+
+척도 3종(스마트폰 과의존 9문항, CSHQ 한국어판 52번까지, NQ-C 20문항)은 **첫 방문에 한 번, 보호자가 종이로** 작성합니다(2026-10-28 결정).
+1. 보호자에게 「첫방문_척도설문지_v0.1.docx」를 인쇄해 드립니다(연구 번호를 위에 적음).
+2. 연구진이 `scales.html?id=GP-007&c=참여코드`를 열고 체크된 번호를 그대로 입력합니다. 빈 문항과 두 칸 체크 문항은 비워 두고 메모에 적습니다.
+3. 마지막 화면에서 자동 채점 결과를 확인하고 제출합니다. 시트 `scales_0.3` 탭에 원응답과 점수가 함께 저장됩니다.
+
+- 화면과 저장소에는 척도 원문을 싣지 않습니다(문항 번호와 짧은 표지만). 공개 저장소에 원문을 넣지 마세요.
+- 채점 규칙은 `assets/js/scoring.js`와 「첫방문_척도_채점입력안내_v0.1.docx」에 있습니다. 하위척도·총점은 결측 문항이 하나라도 있으면 비워 둡니다. 원응답이 남아 있으므로 규칙을 바꾸면 다시 계산할 수 있습니다.
+- 사용 허락: 스마트폰 과의존 척도는 공공누리 제4유형(변경금지), CSHQ는 개발자(Owens) 허락, NQ-C는 한국영양학회 확인이 필요합니다.
 
 ## 운영 전 확인할 것
 

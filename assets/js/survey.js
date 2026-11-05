@@ -3,7 +3,7 @@
 'use strict';
 const CFG = window.SURVEY_CONFIG;
 const { SECTIONS, WD, SPORTS, INTENSITY } = window.SURVEY;
-const FORM = document.body.dataset.form;               // 'baseline' | 'followup'
+const FORM = document.body.dataset.form;               // 'baseline' | 'followup' | 'scales'(연구진 척도 입력)
 const URLP = new URLSearchParams(location.search);
 const DEMO = CFG.MODE !== 'live' || URLP.get('debug') === '1';
 const S = {};
@@ -41,6 +41,7 @@ function activeSections() {
 }
 const qsOf = sec => sec.qs.filter(q => !q.forms || q.forms.includes(FORM));
 const qVisible = q => !q.show || !!q.show(S, FORM);
+const NOINPUT = ['calc', 'scorebox', 'score'];
 function isAnswered(q) {
   const v = S[q.id];
   if (S[q.id + '_none']) return true;
@@ -52,7 +53,7 @@ function isAnswered(q) {
 function counts() {
   let total = 0, done = 0; const missingCore = [];
   activeSections().forEach((sec, si) => qsOf(sec).forEach(q => {
-    if (q.t === 'calc' || !qVisible(q)) return;
+    if (NOINPUT.includes(q.t) || !qVisible(q)) return;
     total++;
     if (isAnswered(q)) done++; else if (q.p === '핵심') missingCore.push({ si, q });
   }));
@@ -97,7 +98,8 @@ const guide = () => h('details', { class: 'guide' }, [
 
 function render(q) {
   const box = h('div', { class: 'q', 'data-id': q.id });
-  if (q.t !== 'calc') {
+  if (q.t === 'score') { box.hidden = true; return box; }
+  if (q.t !== 'calc' && q.t !== 'scorebox') {
     box.append(h('div', { class: 'qhead' }, [
       h('p', { class: 'qtext', text: pick(q.q) }),
       h('span', { class: 'meta' }, [h('code', { text: q.id }), h('span', { class: 'pri pri-' + q.p, text: q.p })]),
@@ -249,6 +251,39 @@ function fill(q, body) {
       if (shown < q.n) body.append(h('p', { class: 'muted', text: `… 이하 ${q.n - shown}문항 (실제 설문에는 ${q.n}문항이 모두 들어갑니다)` }));
       break;
     }
+    case 'date': {
+      const inp = h('input', { type: 'date', id: 'in_' + id, 'aria-label': pick(q.q) });
+      if (S[id]) inp.value = S[id];
+      inp.addEventListener('change', () => set(inp.value));
+      body.append(inp);
+      break;
+    }
+    case 'grid': {
+      // 척도 원응답 입력: 문항 번호 + 짧은 표지 + 번호 버튼. 같은 번호를 다시 누르면 지움.
+      const v = S[id] || {};
+      q.items.forEach(([n, label, k]) => {
+        const opts = q.o || Array.from({ length: k }, (_, i) => String(i + 1));
+        body.append(h('div', { class: 'subq scale grid' }, [h('span', { class: 'lab', text: `${n}. ${label}` }),
+          chips(opts, o => v[n] === o, o => { S[id] = { ...(S[id] || {}), [n]: v[n] === o ? '' : o }; changed(); redraw(); }, { name: `${pick(q.q)} ${n}` })]));
+      });
+      const filled = q.items.filter(([n]) => v[n]).length;
+      body.append(h('p', { class: 'muted', text: `입력 ${filled} / ${q.items.length}` }));
+      break;
+    }
+    case 'scorebox': {
+      const answers = {};
+      activeSections().forEach(sec => qsOf(sec).forEach(x => { if (!NOINPUT.includes(x.t) && qVisible(x) && S[x.id] !== undefined) answers[x.id] = S[x.id]; }));
+      const r = window.SURVEY_FLATTEN.flatten(SECTIONS, FORM, answers);
+      const show = (lab, val) => h('div', { class: 'cell' }, [h('span', { class: 'lab', text: lab }), h('strong', { class: 'big', text: val === '' || val === undefined ? '—' : String(val) })]);
+      body.append(h('div', { class: 'calcbox' }, [
+        h('p', { class: 'lab', text: '자동 채점 결과 (확인용 — 결측이 있으면 해당 점수는 비어 있음)' }),
+        h('div', { class: 'pair' }, [show('스마트폰 총점', r.sod_total), show('스마트폰 군', r.sod_group)]),
+        h('div', { class: 'pair' }, [show('CSHQ 총점', r.cshq_total), show('CSHQ 결측 문항', r.cshq_n_missing)]),
+        h('div', { class: 'pair' }, [show('NQ-C', r.nq_total), show('NQ 등급', r.nq_grade)]),
+        h('p', { class: 'meta-line', text: `CSHQ 하위척도: 입면저항 ${r.cshq_br || '—'} · 입면지연 ${r.cshq_sol || '—'} · 수면량 ${r.cshq_dur || '—'} · 수면불안 ${r.cshq_anx || '—'} · 각성 ${r.cshq_nw || '—'} · 사건수면 ${r.cshq_para || '—'} · 호흡 ${r.cshq_sdb || '—'} · 주간졸림 ${r.cshq_ds || '—'}` }),
+      ]));
+      break;
+    }
     case 'calc': {
       const dur = (a, b) => { if (!a || !b) return null; const [ah, am] = a.split(':').map(Number), [bh, bm] = b.split(':').map(Number); let m = (bh * 60 + bm) - (ah * 60 + am); if (m <= 0) m += 1440; return m; };
       const fmt = m => m == null ? '—' : `${Math.floor(m / 60)}시간 ${m % 60}분`;
@@ -280,8 +315,8 @@ function refresh() {
     const el = document.querySelector(`.q[data-id="${q.id}"]`);
     if (!el) return;
     el.hidden = !qVisible(q);
-    el.classList.toggle('done', q.t !== 'calc' && isAnswered(q));
-    if (q.t === 'calc' || q.oBy) fill(q, el.querySelector('.qbody'));
+    el.classList.toggle('done', !NOINPUT.includes(q.t) && isAnswered(q));
+    if (q.t === 'calc' || q.t === 'scorebox' || q.oBy) fill(q, el.querySelector('.qbody'));
   });
   if (phase === 'q') $('#step').textContent = `${cur + 1} / ${secs.length}`;
   const { total, done } = counts();
@@ -337,13 +372,13 @@ function review() {
 function payload() {
   const answers = {};
   activeSections().forEach(sec => qsOf(sec).forEach(q => {
-    if (q.t === 'calc' || q.secret || !qVisible(q)) return;
+    if (NOINPUT.includes(q.t) || q.secret || !qVisible(q)) return;
     if (S[q.id + '_none']) answers[q.id] = 'none';
     else if (isAnswered(q)) answers[q.id] = S[q.id];
   }));
   const pid = String(S.participant_id || '').trim().toUpperCase();
   answers.participant_id = pid;
-  const visit = FORM === 'baseline' ? '0' : (S.visit_month || '');
+  const visit = FORM === 'followup' ? (S.visit_month || '') : '0';
   return {
     study: CFG.STUDY_NAME, form: FORM, form_version: CFG.FORM_VERSION,
     participant_id: pid, visit_month: visit,
@@ -411,7 +446,7 @@ function done(data, res) {
 function toc() {
   const box = $('#toc'), list = $('#toclist'); list.innerHTML = '';
   activeSections().forEach((sec, i) => {
-    const qs = qsOf(sec).filter(q => q.t !== 'calc' && qVisible(q));
+    const qs = qsOf(sec).filter(q => !NOINPUT.includes(q.t) && qVisible(q));
     const b = h('button', { type: 'button', class: 'tocitem' + (i === cur && phase === 'q' ? ' on' : '') }, [h('span', { text: `${i + 1}. ${sec.title}` }), h('span', { class: 'muted', text: `${qs.filter(isAnswered).length}/${qs.length}` })]);
     b.addEventListener('click', () => { box.hidden = true; show(i); });
     list.append(b);
@@ -421,7 +456,7 @@ function toc() {
 
 /* ---------- 시작 ---------- */
 document.addEventListener('DOMContentLoaded', () => {
-  document.title = `${FORM === 'baseline' ? '첫 방문 설문' : '정기 설문'} · ${CFG.STUDY_NAME}`;
+  document.title = `${{ baseline: '첫 방문 설문', followup: '정기 설문', scales: '첫 방문 척도 입력(연구진)' }[FORM]} · ${CFG.STUDY_NAME}`;
   if (DEMO) document.body.classList.add('demo');
   // 링크로 받은 값 채우기 (예: followup.html?id=KY-0007&v=6&sex=여아)
   SECTIONS.forEach(sec => sec.qs.forEach(q => { if (q.fromUrl && URLP.get(q.fromUrl)) S[q.id] = URLP.get(q.fromUrl); }));

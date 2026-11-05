@@ -3,9 +3,13 @@
  * 한 문항이 여러 칸이면 변수명 뒤에 접미사를 붙입니다.
  *   주중/주말 → _wd/_we, 아버지/어머니 → _father/_mother, 나이 → _y/_m,
  *   척도 → _1 … _n, 여러 개 + 세부 → 변수명(이름 목록) + _json, 운동 → _n(개수) + _json
+ *   척도 원응답(grid) → (prefix 또는 id)_문항번호, 척도 점수(score) → scoring.js의 COLUMNS
  */
 (function (root) {
 'use strict';
+const SCORING = root.SURVEY_SCORING || (typeof require !== 'undefined' ? require('./scoring.js') : null);
+const gridPrefix = q => q.prefix || q.id;
+const codeOf = v => { const m = /^(\d+)\s/.exec(String(v)); return m ? m[1] : String(v); };
 const WD0 = '주중 (월–금)';
 const SUF = { '아버지': 'father', '어머니': 'mother' };
 const isWD = q => !q.labels || q.labels[0] === WD0;
@@ -14,7 +18,9 @@ const keysOf = q => isWD(q) ? [['wd', 'wd'], ['we', 'we']] : q.labels.map(l => [
 function columnsOf(q) {
   if (q.secret || q.meta) return [];  // 연구 번호·방문 차수는 시트 앞쪽 고정 열에 들어감
   switch (q.t) {
-    case 'calc': return [];
+    case 'calc': case 'scorebox': return [];
+    case 'grid': return q.items.map(([n]) => `${gridPrefix(q)}_${n}`);
+    case 'score': return SCORING.COLUMNS.slice();
     case 'pairNum': case 'pairSingle': case 'pairClock': return keysOf(q).map(([, s]) => `${q.id}_${s}`);
     case 'age': return [`${q.id}_y`, `${q.id}_m`];
     case 'multiDetail': return [q.id, `${q.id}_json`];
@@ -35,11 +41,13 @@ function columnsFor(sections, form) {
 function flatten(sections, form, answers) {
   const row = {};
   questionsFor(sections, form).forEach(q => {
+    if (q.t === 'score') { Object.assign(row, SCORING.compute(row)); return; }
     const v = answers[q.id];
     if (v === undefined || q.secret || q.meta) return;
     const none = v === 'none';
     switch (q.t) {
-      case 'calc': break;
+      case 'calc': case 'scorebox': break;
+      case 'grid': Object.entries(v).forEach(([k, x]) => { if (x !== '' && x != null) row[`${gridPrefix(q)}_${k}`] = x; }); break;
       case 'pairNum': case 'pairSingle': case 'pairClock':
         keysOf(q).forEach(([k, s]) => { if (v && v[k] !== undefined && v[k] !== '') row[`${q.id}_${s}`] = v[k]; });
         break;
@@ -54,7 +62,7 @@ function flatten(sections, form, answers) {
         if (!none) row[`${q.id}_json`] = JSON.stringify(v);
         break;
       case 'scale': Object.entries(v).forEach(([k, x]) => { row[`${q.id}_${k}`] = x; }); break;
-      default: row[q.id] = String(v);
+      default: row[q.id] = q.code ? codeOf(v) : String(v);
     }
   });
   return row;

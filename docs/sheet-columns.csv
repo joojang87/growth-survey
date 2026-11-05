@@ -85,67 +85,6 @@ baseline,fruit,fruit,"과일 (하루 평균)",먹는 것
 baseline,veg,veg,"채소 반찬 (끼니 기준, 하루 평균)",먹는 것
 baseline,sweets,sweets,"과자·사탕·초콜릿·빵",먹는 것
 baseline,late_snack,late_snack,"저녁 식사 후 야식을 먹은 날",먹는 것
-baseline,NIA_SAS_child_1,NIA_SAS_child,"스마트폰 사용 (스마트폰 과의존 척도, 유아동 관찰자용)",1년에 한 번 하는 질문
-baseline,NIA_SAS_child_2,NIA_SAS_child,"스마트폰 사용 (스마트폰 과의존 척도, 유아동 관찰자용)",1년에 한 번 하는 질문
-baseline,NIA_SAS_child_3,NIA_SAS_child,"스마트폰 사용 (스마트폰 과의존 척도, 유아동 관찰자용)",1년에 한 번 하는 질문
-baseline,NIA_SAS_child_4,NIA_SAS_child,"스마트폰 사용 (스마트폰 과의존 척도, 유아동 관찰자용)",1년에 한 번 하는 질문
-baseline,NIA_SAS_child_5,NIA_SAS_child,"스마트폰 사용 (스마트폰 과의존 척도, 유아동 관찰자용)",1년에 한 번 하는 질문
-baseline,NIA_SAS_child_6,NIA_SAS_child,"스마트폰 사용 (스마트폰 과의존 척도, 유아동 관찰자용)",1년에 한 번 하는 질문
-baseline,NIA_SAS_child_7,NIA_SAS_child,"스마트폰 사용 (스마트폰 과의존 척도, 유아동 관찰자용)",1년에 한 번 하는 질문
-baseline,NIA_SAS_child_8,NIA_SAS_child,"스마트폰 사용 (스마트폰 과의존 척도, 유아동 관찰자용)",1년에 한 번 하는 질문
-baseline,NIA_SAS_child_9,NIA_SAS_child,"스마트폰 사용 (스마트폰 과의존 척도, 유아동 관찰자용)",1년에 한 번 하는 질문
-baseline,CSHQ_1,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
-baseline,CSHQ_2,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
-baseline,CSHQ_3,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
-baseline,CSHQ_4,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
-baseline,CSHQ_5,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
-baseline,CSHQ_6,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
-baseline,CSHQ_7,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
-baseline,CSHQ_8,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
-baseline,CSHQ_9,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
-baseline,CSHQ_10,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
-baseline,CSHQ_11,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
-baseline,CSHQ_12,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
-baseline,CSHQ_13,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
-baseline,CSHQ_14,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
-baseline,CSHQ_15,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
-baseline,CSHQ_16,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
-baseline,CSHQ_17,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
-baseline,CSHQ_18,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
-baseline,CSHQ_19,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
-baseline,CSHQ_20,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
-baseline,CSHQ_21,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
-baseline,CSHQ_22,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
-baseline,CSHQ_23,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
-baseline,CSHQ_24,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
-baseline,CSHQ_25,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
-baseline,CSHQ_26,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
-baseline,CSHQ_27,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
-baseline,CSHQ_28,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
-baseline,CSHQ_29,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
-baseline,CSHQ_30,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
-baseline,CSHQ_31,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
-baseline,CSHQ_32,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
-baseline,CSHQ_33,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
-baseline,NQ_C_1,NQ_C,"아이의 식생활 (어린이 영양지수 NQ)",1년에 한 번 하는 질문
-baseline,NQ_C_2,NQ_C,"아이의 식생활 (어린이 영양지수 NQ)",1년에 한 번 하는 질문
-baseline,NQ_C_3,NQ_C,"아이의 식생활 (어린이 영양지수 NQ)",1년에 한 번 하는 질문
-baseline,NQ_C_4,NQ_C,"아이의 식생활 (어린이 영양지수 NQ)",1년에 한 번 하는 질문
-baseline,NQ_C_5,NQ_C,"아이의 식생활 (어린이 영양지수 NQ)",1년에 한 번 하는 질문
-baseline,NQ_C_6,NQ_C,"아이의 식생활 (어린이 영양지수 NQ)",1년에 한 번 하는 질문
-baseline,NQ_C_7,NQ_C,"아이의 식생활 (어린이 영양지수 NQ)",1년에 한 번 하는 질문
-baseline,NQ_C_8,NQ_C,"아이의 식생활 (어린이 영양지수 NQ)",1년에 한 번 하는 질문
-baseline,NQ_C_9,NQ_C,"아이의 식생활 (어린이 영양지수 NQ)",1년에 한 번 하는 질문
-baseline,NQ_C_10,NQ_C,"아이의 식생활 (어린이 영양지수 NQ)",1년에 한 번 하는 질문
-baseline,NQ_C_11,NQ_C,"아이의 식생활 (어린이 영양지수 NQ)",1년에 한 번 하는 질문
-baseline,NQ_C_12,NQ_C,"아이의 식생활 (어린이 영양지수 NQ)",1년에 한 번 하는 질문
-baseline,NQ_C_13,NQ_C,"아이의 식생활 (어린이 영양지수 NQ)",1년에 한 번 하는 질문
-baseline,NQ_C_14,NQ_C,"아이의 식생활 (어린이 영양지수 NQ)",1년에 한 번 하는 질문
-baseline,NQ_C_15,NQ_C,"아이의 식생활 (어린이 영양지수 NQ)",1년에 한 번 하는 질문
-baseline,NQ_C_16,NQ_C,"아이의 식생활 (어린이 영양지수 NQ)",1년에 한 번 하는 질문
-baseline,NQ_C_17,NQ_C,"아이의 식생활 (어린이 영양지수 NQ)",1년에 한 번 하는 질문
-baseline,NQ_C_18,NQ_C,"아이의 식생활 (어린이 영양지수 NQ)",1년에 한 번 하는 질문
-baseline,NQ_C_19,NQ_C,"아이의 식생활 (어린이 영양지수 NQ)",1년에 한 번 하는 질문
 followup,respondent,respondent,"응답하시는 분은 아이와 어떤 관계인가요?",시작하기
 followup,child_sex,child_sex,"아이의 성별",시작하기
 followup,signs,signs,"지난 방문 이후 아이 몸에서 새로 본 변화가 있나요?",아이 몸의 변화
@@ -208,64 +147,120 @@ followup,supp_change_what,supp_change_what,"무엇을, 언제부터(언제까지
 followup,illness,illness,"입원하거나 크게 아팠던 적, 새로 먹기 시작한 약이 있나요?",지난 방문 이후
 followup,illness_what,illness_what,"어떤 일이었나요?",지난 방문 이후
 followup,life_event,life_event,"생활에 큰 변화가 있었나요?",지난 방문 이후
-followup,NIA_SAS_child_1,NIA_SAS_child,"스마트폰 사용 (스마트폰 과의존 척도, 유아동 관찰자용)",1년에 한 번 하는 질문
-followup,NIA_SAS_child_2,NIA_SAS_child,"스마트폰 사용 (스마트폰 과의존 척도, 유아동 관찰자용)",1년에 한 번 하는 질문
-followup,NIA_SAS_child_3,NIA_SAS_child,"스마트폰 사용 (스마트폰 과의존 척도, 유아동 관찰자용)",1년에 한 번 하는 질문
-followup,NIA_SAS_child_4,NIA_SAS_child,"스마트폰 사용 (스마트폰 과의존 척도, 유아동 관찰자용)",1년에 한 번 하는 질문
-followup,NIA_SAS_child_5,NIA_SAS_child,"스마트폰 사용 (스마트폰 과의존 척도, 유아동 관찰자용)",1년에 한 번 하는 질문
-followup,NIA_SAS_child_6,NIA_SAS_child,"스마트폰 사용 (스마트폰 과의존 척도, 유아동 관찰자용)",1년에 한 번 하는 질문
-followup,NIA_SAS_child_7,NIA_SAS_child,"스마트폰 사용 (스마트폰 과의존 척도, 유아동 관찰자용)",1년에 한 번 하는 질문
-followup,NIA_SAS_child_8,NIA_SAS_child,"스마트폰 사용 (스마트폰 과의존 척도, 유아동 관찰자용)",1년에 한 번 하는 질문
-followup,NIA_SAS_child_9,NIA_SAS_child,"스마트폰 사용 (스마트폰 과의존 척도, 유아동 관찰자용)",1년에 한 번 하는 질문
-followup,CSHQ_1,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
-followup,CSHQ_2,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
-followup,CSHQ_3,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
-followup,CSHQ_4,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
-followup,CSHQ_5,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
-followup,CSHQ_6,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
-followup,CSHQ_7,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
-followup,CSHQ_8,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
-followup,CSHQ_9,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
-followup,CSHQ_10,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
-followup,CSHQ_11,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
-followup,CSHQ_12,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
-followup,CSHQ_13,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
-followup,CSHQ_14,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
-followup,CSHQ_15,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
-followup,CSHQ_16,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
-followup,CSHQ_17,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
-followup,CSHQ_18,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
-followup,CSHQ_19,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
-followup,CSHQ_20,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
-followup,CSHQ_21,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
-followup,CSHQ_22,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
-followup,CSHQ_23,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
-followup,CSHQ_24,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
-followup,CSHQ_25,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
-followup,CSHQ_26,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
-followup,CSHQ_27,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
-followup,CSHQ_28,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
-followup,CSHQ_29,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
-followup,CSHQ_30,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
-followup,CSHQ_31,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
-followup,CSHQ_32,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
-followup,CSHQ_33,CSHQ,"아이의 수면 습관 (CSHQ)",1년에 한 번 하는 질문
-followup,NQ_C_1,NQ_C,"아이의 식생활 (어린이 영양지수 NQ)",1년에 한 번 하는 질문
-followup,NQ_C_2,NQ_C,"아이의 식생활 (어린이 영양지수 NQ)",1년에 한 번 하는 질문
-followup,NQ_C_3,NQ_C,"아이의 식생활 (어린이 영양지수 NQ)",1년에 한 번 하는 질문
-followup,NQ_C_4,NQ_C,"아이의 식생활 (어린이 영양지수 NQ)",1년에 한 번 하는 질문
-followup,NQ_C_5,NQ_C,"아이의 식생활 (어린이 영양지수 NQ)",1년에 한 번 하는 질문
-followup,NQ_C_6,NQ_C,"아이의 식생활 (어린이 영양지수 NQ)",1년에 한 번 하는 질문
-followup,NQ_C_7,NQ_C,"아이의 식생활 (어린이 영양지수 NQ)",1년에 한 번 하는 질문
-followup,NQ_C_8,NQ_C,"아이의 식생활 (어린이 영양지수 NQ)",1년에 한 번 하는 질문
-followup,NQ_C_9,NQ_C,"아이의 식생활 (어린이 영양지수 NQ)",1년에 한 번 하는 질문
-followup,NQ_C_10,NQ_C,"아이의 식생활 (어린이 영양지수 NQ)",1년에 한 번 하는 질문
-followup,NQ_C_11,NQ_C,"아이의 식생활 (어린이 영양지수 NQ)",1년에 한 번 하는 질문
-followup,NQ_C_12,NQ_C,"아이의 식생활 (어린이 영양지수 NQ)",1년에 한 번 하는 질문
-followup,NQ_C_13,NQ_C,"아이의 식생활 (어린이 영양지수 NQ)",1년에 한 번 하는 질문
-followup,NQ_C_14,NQ_C,"아이의 식생활 (어린이 영양지수 NQ)",1년에 한 번 하는 질문
-followup,NQ_C_15,NQ_C,"아이의 식생활 (어린이 영양지수 NQ)",1년에 한 번 하는 질문
-followup,NQ_C_16,NQ_C,"아이의 식생활 (어린이 영양지수 NQ)",1년에 한 번 하는 질문
-followup,NQ_C_17,NQ_C,"아이의 식생활 (어린이 영양지수 NQ)",1년에 한 번 하는 질문
-followup,NQ_C_18,NQ_C,"아이의 식생활 (어린이 영양지수 NQ)",1년에 한 번 하는 질문
-followup,NQ_C_19,NQ_C,"아이의 식생활 (어린이 영양지수 NQ)",1년에 한 번 하는 질문
+scales,scale_date,scale_date,"설문지 작성일",척도 입력 시작
+scales,scale_resp,scale_resp,"작성하신 분",척도 입력 시작
+scales,scale_entered_by,scale_entered_by,"입력자",척도 입력 시작
+scales,scale_note,scale_note,"메모",척도 입력 시작
+scales,sod_use,sod_use,"[먼저] 아이가 스마트폰을 사용하나요?",1부 · 스마트폰 이용
+scales,sod_1,sod,"스마트폰 과의존 척도",1부 · 스마트폰 이용
+scales,sod_2,sod,"스마트폰 과의존 척도",1부 · 스마트폰 이용
+scales,sod_3,sod,"스마트폰 과의존 척도",1부 · 스마트폰 이용
+scales,sod_4,sod,"스마트폰 과의존 척도",1부 · 스마트폰 이용
+scales,sod_5,sod,"스마트폰 과의존 척도",1부 · 스마트폰 이용
+scales,sod_6,sod,"스마트폰 과의존 척도",1부 · 스마트폰 이용
+scales,sod_7,sod,"스마트폰 과의존 척도",1부 · 스마트폰 이용
+scales,sod_8,sod,"스마트폰 과의존 척도",1부 · 스마트폰 이용
+scales,sod_9,sod,"스마트폰 과의존 척도",1부 · 스마트폰 이용
+scales,cshq_bed_wd,cshq_bed,"잠자리에 드는 시각",2부 · 수면 습관 (1)
+scales,cshq_bed_we,cshq_bed,"잠자리에 드는 시각",2부 · 수면 습관 (1)
+scales,cshq_1,cshq_a,"취침 (1~12)",2부 · 수면 습관 (1)
+scales,cshq_2,cshq_a,"취침 (1~12)",2부 · 수면 습관 (1)
+scales,cshq_3,cshq_a,"취침 (1~12)",2부 · 수면 습관 (1)
+scales,cshq_4,cshq_a,"취침 (1~12)",2부 · 수면 습관 (1)
+scales,cshq_5,cshq_a,"취침 (1~12)",2부 · 수면 습관 (1)
+scales,cshq_6,cshq_a,"취침 (1~12)",2부 · 수면 습관 (1)
+scales,cshq_7,cshq_a,"취침 (1~12)",2부 · 수면 습관 (1)
+scales,cshq_8,cshq_a,"취침 (1~12)",2부 · 수면 습관 (1)
+scales,cshq_9,cshq_a,"취침 (1~12)",2부 · 수면 습관 (1)
+scales,cshq_10,cshq_a,"취침 (1~12)",2부 · 수면 습관 (1)
+scales,cshq_11,cshq_a,"취침 (1~12)",2부 · 수면 습관 (1)
+scales,cshq_12,cshq_a,"취침 (1~12)",2부 · 수면 습관 (1)
+scales,cshq_tst_wd,cshq_tst,"하루 평균 수면 시간 (밤잠+낮잠)",2부 · 수면 습관 (1)
+scales,cshq_tst_we,cshq_tst,"하루 평균 수면 시간 (밤잠+낮잠)",2부 · 수면 습관 (1)
+scales,cshq_13,cshq_b,"수면 행동 (13~30)",2부 · 수면 습관 (1)
+scales,cshq_14,cshq_b,"수면 행동 (13~30)",2부 · 수면 습관 (1)
+scales,cshq_15,cshq_b,"수면 행동 (13~30)",2부 · 수면 습관 (1)
+scales,cshq_16,cshq_b,"수면 행동 (13~30)",2부 · 수면 습관 (1)
+scales,cshq_17,cshq_b,"수면 행동 (13~30)",2부 · 수면 습관 (1)
+scales,cshq_18,cshq_b,"수면 행동 (13~30)",2부 · 수면 습관 (1)
+scales,cshq_19,cshq_b,"수면 행동 (13~30)",2부 · 수면 습관 (1)
+scales,cshq_20,cshq_b,"수면 행동 (13~30)",2부 · 수면 습관 (1)
+scales,cshq_21,cshq_b,"수면 행동 (13~30)",2부 · 수면 습관 (1)
+scales,cshq_22,cshq_b,"수면 행동 (13~30)",2부 · 수면 습관 (1)
+scales,cshq_23,cshq_b,"수면 행동 (13~30)",2부 · 수면 습관 (1)
+scales,cshq_24,cshq_b,"수면 행동 (13~30)",2부 · 수면 습관 (1)
+scales,cshq_25,cshq_b,"수면 행동 (13~30)",2부 · 수면 습관 (1)
+scales,cshq_26,cshq_b,"수면 행동 (13~30)",2부 · 수면 습관 (1)
+scales,cshq_27,cshq_b,"수면 행동 (13~30)",2부 · 수면 습관 (1)
+scales,cshq_28,cshq_b,"수면 행동 (13~30)",2부 · 수면 습관 (1)
+scales,cshq_29,cshq_b,"수면 행동 (13~30)",2부 · 수면 습관 (1)
+scales,cshq_30,cshq_b,"수면 행동 (13~30)",2부 · 수면 습관 (1)
+scales,cshq_22_site,cshq_22_site,"22번 — 아픈 부위",2부 · 수면 습관 (1)
+scales,cshq_31,cshq_c,"밤에 깨기 (31~33)",2부 · 수면 습관 (2)
+scales,cshq_32,cshq_c,"밤에 깨기 (31~33)",2부 · 수면 습관 (2)
+scales,cshq_33,cshq_c,"밤에 깨기 (31~33)",2부 · 수면 습관 (2)
+scales,cshq_34_min,cshq_34_min,"34번 — 깨면 몇 분 깨어 있나",2부 · 수면 습관 (2)
+scales,cshq_wake_wd,cshq_wake,"아침에 일어나는 시각",2부 · 수면 습관 (2)
+scales,cshq_wake_we,cshq_wake,"아침에 일어나는 시각",2부 · 수면 습관 (2)
+scales,cshq_35,cshq_d,"아침에 일어나기 (35~42)",2부 · 수면 습관 (2)
+scales,cshq_36,cshq_d,"아침에 일어나기 (35~42)",2부 · 수면 습관 (2)
+scales,cshq_37,cshq_d,"아침에 일어나기 (35~42)",2부 · 수면 습관 (2)
+scales,cshq_38,cshq_d,"아침에 일어나기 (35~42)",2부 · 수면 습관 (2)
+scales,cshq_39,cshq_d,"아침에 일어나기 (35~42)",2부 · 수면 습관 (2)
+scales,cshq_40,cshq_d,"아침에 일어나기 (35~42)",2부 · 수면 습관 (2)
+scales,cshq_41,cshq_d,"아침에 일어나기 (35~42)",2부 · 수면 습관 (2)
+scales,cshq_42,cshq_d,"아침에 일어나기 (35~42)",2부 · 수면 습관 (2)
+scales,cshq_43,cshq_e,"낮 동안의 졸림 (43~45)",2부 · 수면 습관 (2)
+scales,cshq_44,cshq_e,"낮 동안의 졸림 (43~45)",2부 · 수면 습관 (2)
+scales,cshq_45,cshq_e,"낮 동안의 졸림 (43~45)",2부 · 수면 습관 (2)
+scales,cshq_46,cshq_f,"졸림 상황 (46~52)",2부 · 수면 습관 (2)
+scales,cshq_47,cshq_f,"졸림 상황 (46~52)",2부 · 수면 습관 (2)
+scales,cshq_48,cshq_f,"졸림 상황 (46~52)",2부 · 수면 습관 (2)
+scales,cshq_49,cshq_f,"졸림 상황 (46~52)",2부 · 수면 습관 (2)
+scales,cshq_50,cshq_f,"졸림 상황 (46~52)",2부 · 수면 습관 (2)
+scales,cshq_51,cshq_f,"졸림 상황 (46~52)",2부 · 수면 습관 (2)
+scales,cshq_52,cshq_f,"졸림 상황 (46~52)",2부 · 수면 습관 (2)
+scales,nq_1,nq,"학령기 아동 영양지수(NQ-C)",3부 · 식생활
+scales,nq_2,nq,"학령기 아동 영양지수(NQ-C)",3부 · 식생활
+scales,nq_3,nq,"학령기 아동 영양지수(NQ-C)",3부 · 식생활
+scales,nq_4,nq,"학령기 아동 영양지수(NQ-C)",3부 · 식생활
+scales,nq_5,nq,"학령기 아동 영양지수(NQ-C)",3부 · 식생활
+scales,nq_6,nq,"학령기 아동 영양지수(NQ-C)",3부 · 식생활
+scales,nq_7,nq,"학령기 아동 영양지수(NQ-C)",3부 · 식생활
+scales,nq_8,nq,"학령기 아동 영양지수(NQ-C)",3부 · 식생활
+scales,nq_9,nq,"학령기 아동 영양지수(NQ-C)",3부 · 식생활
+scales,nq_10,nq,"학령기 아동 영양지수(NQ-C)",3부 · 식생활
+scales,nq_11,nq,"학령기 아동 영양지수(NQ-C)",3부 · 식생활
+scales,nq_12,nq,"학령기 아동 영양지수(NQ-C)",3부 · 식생활
+scales,nq_13,nq,"학령기 아동 영양지수(NQ-C)",3부 · 식생활
+scales,nq_14,nq,"학령기 아동 영양지수(NQ-C)",3부 · 식생활
+scales,nq_15,nq,"학령기 아동 영양지수(NQ-C)",3부 · 식생활
+scales,nq_16,nq,"학령기 아동 영양지수(NQ-C)",3부 · 식생활
+scales,nq_17,nq,"학령기 아동 영양지수(NQ-C)",3부 · 식생활
+scales,nq_18,nq,"학령기 아동 영양지수(NQ-C)",3부 · 식생활
+scales,nq_19,nq,"학령기 아동 영양지수(NQ-C)",3부 · 식생활
+scales,nq_20,nq,"학령기 아동 영양지수(NQ-C)",3부 · 식생활
+scales,sod_ctrl,_scores,"",3부 · 식생활
+scales,sod_sal,_scores,"",3부 · 식생활
+scales,sod_cons,_scores,"",3부 · 식생활
+scales,sod_total,_scores,"",3부 · 식생활
+scales,sod_group,_scores,"",3부 · 식생활
+scales,cshq_br,_scores,"",3부 · 식생활
+scales,cshq_sol,_scores,"",3부 · 식생활
+scales,cshq_dur,_scores,"",3부 · 식생활
+scales,cshq_anx,_scores,"",3부 · 식생활
+scales,cshq_nw,_scores,"",3부 · 식생활
+scales,cshq_para,_scores,"",3부 · 식생활
+scales,cshq_sdb,_scores,"",3부 · 식생활
+scales,cshq_ds,_scores,"",3부 · 식생활
+scales,cshq_total,_scores,"",3부 · 식생활
+scales,cshq_total_alt,_scores,"",3부 · 식생활
+scales,cshq_n_missing,_scores,"",3부 · 식생활
+scales,nq_bal,_scores,"",3부 · 식생활
+scales,nq_div,_scores,"",3부 · 식생활
+scales,nq_mod,_scores,"",3부 · 식생활
+scales,nq_pra,_scores,"",3부 · 식생활
+scales,nq_env,_scores,"",3부 · 식생활
+scales,nq_total,_scores,"",3부 · 식생활
+scales,nq_grade,_scores,"",3부 · 식생활
+scales,nq_n_missing,_scores,"",3부 · 식생활

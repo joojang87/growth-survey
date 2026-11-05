@@ -5,7 +5,7 @@
  * 아래 COLUMNS는 questions.js에서 자동 생성한 값입니다. 문항을 바꾸면 tools/make-backend.js로 다시 만드세요.
  *
  * 저장 구조
- *   - 탭 이름 = 설문종류_버전 (예: baseline_0.2, followup_0.2). 버전을 올리면 새 탭이 생겨 열이 섞이지 않음
+ *   - 탭 이름 = 설문종류_버전 (예: baseline_0.3, followup_0.3, scales_0.3). 버전을 올리면 새 탭이 생겨 열이 섞이지 않음
  *   - 응답 1건 = 1행. 정의된 열만 저장하고, 원자료 전체는 raw_json 열에 보관
  *   - participants 탭: 연구 번호별 참여 코드(링크에 넣어 보냄). setupParticipants()로 한 번 만듦
  */
@@ -18,6 +18,7 @@ const N_PARTICIPANTS = 150;                 // setupParticipants()가 만들 번
 const VISITS = {
   baseline: ['0'],
   followup: ['3', '6', '9', '12', '15', '18', '21', '24', '27', '30', '33', '36'],
+  scales: ['0'],                            // 첫 방문 척도(종이 응답 → 연구진 입력)
 };
 /* =================================================== */
 

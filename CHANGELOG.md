@@ -1,5 +1,23 @@
 # 문항 변경 이력
 
+## v0.3 — 2026-11-04 (척도 방침 반영, CRF 자료사전 v0.3)
+2026-10-28 결정(척도 3종은 첫 방문 1회, 보호자 종이 응답, 원문 비공개)을 프로그램에 반영했습니다. `FORM_VERSION` 0.3 → 시트에 `baseline_0.3`·`followup_0.3`·`scales_0.3` 탭이 새로 생깁니다.
+
+**삭제**
+- 첫 방문·정기 설문의 '1년에 한 번 하는 질문'(척도 화면)과 `NIA_SAS_child_*`·`CSHQ_*`·`NQ_C_*` 열. `ANNUAL_VISITS: []`
+
+**추가**
+- `scales.html`: 연구진용 척도 입력 화면. 「첫방문_척도설문지_v0.1.docx」(종이)의 체크 번호를 그대로 입력. 화면에는 문항 번호와 짧은 표지만 보임
+  - 입력 정보: `scale_date`, `scale_resp`, `scale_entered_by`, `scale_note`
+  - 스마트폰 과의존: `sod_use`(선별), `sod_1`…`sod_9`
+  - CSHQ: `cshq_bed_wd/we`, `cshq_tst_wd/we`(분), `cshq_1`…`cshq_33`, `cshq_22_site`, `cshq_34_min`, `cshq_wake_wd/we`, `cshq_35`…`cshq_52`
+  - NQ-C(2020): `nq_1`…`nq_20`
+- `assets/js/scoring.js`: 자동 채점(역채점, CSHQ 하위척도 8개·총점, NQ-C 가중치·등급). 결측이 있으면 해당 점수는 빈칸. 점수 열 24개는 `scales` 탭 끝에 저장
+- 새 문항 유형: `date`, `grid`(원응답 입력), `scorebox`(점수 미리보기), `score`(점수 열)
+- Apps Script 수신부: `scales` 설문(방문 차수 0) 허용
+- `index.html`: 척도 입력 카드, 링크 만들기에 '척도 입력' 추가
+
+
 ## v0.2 (수신부 추가) — 2026-10-21
 문항은 그대로이고 저장 방식만 추가했습니다(`FORM_VERSION` 0.2 유지).
 - Google Apps Script 수신부(`backend/Code.gs`): 키·연구 번호 형식·방문 차수·참여 코드 검증, 설문종류_버전별 탭, 1응답 1행, `raw_json` 보관, 같은 번호·차수 재제출은 `duplicate_of`로 표시, 동시 제출 잠금, 수식 실행 방지

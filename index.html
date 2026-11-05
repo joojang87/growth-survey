@@ -24,20 +24,26 @@
 </head>
 <body>
 <div class="wrap">
-  <p class="brand">성장·사춘기 파일럿 코호트 · 보호자 설문 v0.2 (CRF 자료사전 v0.2)</p>
+  <p class="brand">성장·사춘기 파일럿 코호트 · 보호자 설문 v0.3 (CRF 자료사전 v0.3)</p>
   <h1>보호자 설문</h1>
   <p class="lead">연구진용 시작 페이지입니다. 보호자에게는 아래 "보호자용 링크 만들기"로 만든 개별 링크를 보내 주세요.</p>
   <div class="cards">
     <a class="card" href="baseline.html">
       <span class="eyebrow">등록 시 1회 · 약 20–25분</span>
       <h2>첫 방문 설문</h2>
-      <ul><li>아이 몸의 변화</li><li>태어날 때와 아기 때, 가족, 가정·생활 환경, 건강기능식품</li><li>잠, 화면, 활동, 먹는 것, 연 1회 척도</li></ul>
+      <ul><li>아이 몸의 변화</li><li>태어날 때와 아기 때, 가족, 가정·생활 환경, 건강기능식품</li><li>잠, 화면, 활동, 먹는 것</li></ul>
       <span class="go">열기 →</span>
     </a>
     <a class="card" href="followup.html">
       <span class="eyebrow">3개월마다 · 약 10분</span>
       <h2>정기 설문</h2>
-      <ul><li>아이 몸의 변화</li><li>지난 7일의 잠, 화면, 활동, 먹는 것</li><li>지난 방문 이후의 변화, 12·24·36개월에 연 1회 척도</li></ul>
+      <ul><li>아이 몸의 변화</li><li>지난 7일의 잠, 화면, 활동, 먹는 것</li><li>지난 방문 이후의 변화</li></ul>
+      <span class="go">열기 →</span>
+    </a>
+    <a class="card" href="scales.html">
+      <span class="eyebrow">연구진용 · 첫 방문 1회</span>
+      <h2>척도 입력</h2>
+      <ul><li>보호자가 종이로 작성한 척도 설문지(v0.1)의 체크 번호 입력</li><li>스마트폰 과의존 9 · CSHQ 52 · NQ-C 20문항</li><li>점수는 자동 계산(화면에는 원문을 싣지 않음)</li></ul>
       <span class="go">열기 →</span>
     </a>
   </div>
@@ -46,7 +52,7 @@
     <h2 id="lt">보호자용 링크 만들기</h2>
     <p class="help" style="margin:0">연구 번호·참여 코드·방문 차수가 미리 채워진 링크를 만듭니다. 참여 코드는 Google 시트의 participants 탭에 있습니다. 이름은 링크에 넣지 마세요.</p>
     <div class="grid2">
-      <label>설문<select id="f"><option value="baseline">첫 방문</option><option value="followup">정기</option></select></label>
+      <label>설문<select id="f"><option value="baseline">첫 방문</option><option value="followup">정기</option><option value="scales">척도 입력(연구진)</option></select></label>
       <label>연구 번호<input id="pid" type="text" placeholder="GP-007" autocomplete="off"></label>
       <label>참여 코드<input id="code" type="text" placeholder="시트 participants 탭" autocomplete="off"></label>
       <label>방문(개월)<select id="v"><option value="">—</option><option>3</option><option>6</option><option>9</option><option>12</option><option>15</option><option>18</option><option>21</option><option>24</option><option>27</option><option>30</option><option>33</option><option>36</option></select></label>
