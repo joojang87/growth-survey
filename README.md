@@ -1,45 +1,68 @@
-# 성장·사춘기 코호트 보호자 설문 (v0.3)
+# 성장·사춘기 코호트 보호자 설문 (v0.5 · 외래 iPad)
 
-건양대학교병원 소아청소년과 「디지털 행동, 생활습관 요인과 소아 성장/사춘기 변화의 연관성 평가를 위한 전향적 파일럿 코호트 연구」(IRB KYUH 2026-09-027)의 보호자용 모바일 설문입니다. 문항은 **CRF 자료사전 v0.3**(2026-11-04)과 1:1로 대응합니다. 척도 3종은 보호자가 종이로 작성하고 연구진이 `scales.html`로 입력합니다.
+건양대학교병원 소아청소년과 「디지털 행동, 생활습관 요인과 소아 성장/사춘기 변화의 연관성 평가를 위한 전향적 파일럿 코호트 연구」(IRB KYUH 2026-09-027)의 보호자 설문입니다. 문항은 CRF 자료사전과 1:1로 대응합니다. 척도 3종은 보호자가 종이로 작성하고 연구진이 `scales.html`로 입력합니다.
 
-## 구조
+## 구조 (v0.5, `SAVE_MODE: 'device'`)
 
 ```
-보호자 휴대폰 ──▶ baseline.html / followup.html   (GitHub Pages: 화면만)
-연구진 PC     ──▶ scales.html (종이 척도 결과 입력)
-                        │  POST (JSON, text/plain)
-                        ▼
-                 backend/Code.gs                    (Google Apps Script 웹 앱: 검증·저장)
-                        │
-                        ▼
-                 Google 시트                         탭: baseline_0.3 · followup_0.3 · scales_0.3 · participants
+외래 iPad (홈 화면 앱 "성장코호트")
+  ├─ baseline.html  첫 방문 설문  ─┐
+  ├─ followup.html  정기 설문     ─┼─▶ iPad 안의 IndexedDB에만 저장 (인터넷 전송 없음)
+  ├─ scales.html    척도 입력     ─┘
+  └─ data.html      자료 관리 ──▶ CSV·JSON 파일 ("파일에 저장") ──▶ 원내 보안 저장공간
+GitHub Pages: 화면 코드만 내려받는 곳(응답 자료 없음). sw.js가 화면을 iPad에 보관해 오프라인에서도 열림
 ```
 
-- GitHub에는 **화면(코드)만** 올라갑니다. 응답은 연구자 Google 계정의 시트에만 쌓입니다.
-- 이름·생년월일·연락처·차트번호는 받지 않습니다. 연구 번호(GP-001 형식)와 참여 코드만 씁니다.
-- 참여 코드는 확인에만 쓰고 시트의 응답 탭에는 저장하지 않습니다.
+- 응답은 **iPad 밖으로 나가지 않습니다.** GitHub에는 화면 코드만 있습니다.
+- 이름·생년월일·연락처·차트번호는 받지 않습니다. 연구 번호(GP-001 형식)만 씁니다.
+- v0.4까지의 Google Apps Script·시트 방식은 `SAVE_MODE: 'server'`로 되돌릴 수 있습니다(아래 "Google 시트 방식" 참고).
+
+## 외래 iPad 운영
+
+**처음 한 번**
+1. iPad Safari에서 `index.html`(GitHub Pages 주소)을 열고 공유 버튼 → **홈 화면에 추가**. 이후에는 홈 화면 아이콘으로만 엽니다.
+   - Safari 탭과 홈 화면 앱은 저장공간이 서로 다릅니다. Safari 탭의 자료는 7일 넘게 사이트를 열지 않으면 지워질 수 있습니다(WebKit 정책). 홈 화면 앱으로 쓰고, 정기적으로 내보내세요.
+2. 아이콘으로 연 뒤 각 설문 화면을 한 번씩 열어 두면 오프라인에서도 열립니다.
+3. iPad 암호를 켜고 연구 전용으로 씁니다.
+
+**외래에서**
+1. 설문을 열고 연구 번호(정기 설문은 방문 개월도)를 입력한 뒤 보호자에게 건넵니다.
+2. 제출하면 "저장되었습니다"와 접수번호가 나옵니다. 같은 번호·설문·방문이 이미 있으면 "중복"으로 표시해 저장합니다.
+3. 작성 중 응답은 2시간(`DRAFT_MAX_MIN`)이 지나면 버려져 다음 보호자에게 보이지 않습니다.
+
+**자료 옮기기 (외래 후 또는 매주)**
+1. `data.html`(연구진 번호 `STAFF_PIN`) → 설문 종류별 **CSV** 또는 **전체 백업 JSON** → "파일에 저장".
+2. 파일을 원내 보안 저장공간으로 옮깁니다. CSV 열은 v0.4 시트와 같고(앞쪽에 접수번호·저장 시각·설문·버전·연구 번호·방문·시작·제출·중복), 끝의 `raw_json`에 원응답이 있습니다.
+3. 옮긴 것을 확인한 뒤 **내보낸 응답 지우기**로 iPad에서 지웁니다.
+
+- `STAFF_PIN`은 보호자가 실수로 자료 화면을 여는 것을 막는 용도일 뿐 보안 장치가 아닙니다(설정 파일이 공개되어 있음). 실제 보호는 iPad 잠금·기기 관리로 합니다.
+- 화면 파일을 고치면 `sw.js`의 `VERSION`을 올려야 iPad가 새 파일을 받습니다. 새 버전은 인터넷에 연결된 상태에서 앱을 한 번 열면 받아집니다.
 
 ## 파일 구성
 
 ```
-index.html                 연구진용 시작 페이지 (설문 선택, 보호자용 링크 만들기)
+index.html                 시작 페이지 (설문 선택, iPad 준비 안내)
 baseline.html              첫 방문 설문 (등록 시 1회)
-followup.html              정기 설문 (3개월마다)
+followup.html              정기 설문 (3개월마다, 외래)
 scales.html                첫 방문 척도 입력 (연구진용, 종이 설문지 결과)
-assets/js/config.js        설정 — 저장 주소, 키, 연구 번호 형식 등
+data.html                  자료 관리 (연구진용) — 목록, CSV·JSON 내보내기, 지우기
+sw.js, manifest.webmanifest  오프라인 동작·홈 화면 앱 설정
+assets/js/config.js        설정 — 저장 방식, 연구진 번호, 연구 번호 형식 등
 assets/js/questions.js     문항 정의 — 문항을 고칠 때는 이 파일만 수정
-assets/js/flatten.js       응답 → 시트 열 변환 규칙
+assets/js/flatten.js       응답 → 열 변환 규칙 (CSV·시트 공통)
 assets/js/scoring.js       척도 자동 채점 (스마트폰 과의존·CSHQ·영양지수)
+assets/js/localstore.js    iPad 저장(IndexedDB)
 assets/js/survey.js        설문 동작
 assets/css/style.css       디자인
-backend/Code.gs            Google Apps Script 수신부 (tools/make-backend.js가 생성)
-docs/sheet-columns.csv     시트 열 ↔ 문항 대응표 (자동 생성)
+backend/Code.gs            (server 방식일 때만) Google Apps Script 수신부
+docs/sheet-columns.csv     열 ↔ 문항 대응표 (자동 생성)
 tools/make-backend.js      문항이 바뀌면 Code.gs·대응표를 다시 만드는 도구
-tools/Code.template.gs     Code.gs의 원본 틀
-CHANGELOG.md               문항 변경 이력
+CHANGELOG.md               변경 이력
 ```
 
-## 설치 순서 (약 30분)
+## Google 시트 방식 (v0.4까지, `SAVE_MODE: 'server'`일 때만)
+
+### 설치 순서 (약 30분)
 
 ### A. Google 시트 + Apps Script
 1. Google Drive에서 새 스프레드시트를 만듭니다(예: `코호트설문_응답`).
@@ -67,7 +90,7 @@ CHANGELOG.md               문항 변경 이력
 2. 휴대폰으로 열어 시험 응답을 제출하고, 접수번호가 보이는지, 시트의 `followup_0.3` 탭에 행이 생겼는지 확인합니다. `scales.html`도 같은 번호로 한 번 시험합니다(`scales_0.3` 탭).
 3. 시험 행을 지우고, `participants` 탭에서 GP-150의 `active`를 `FALSE`로 바꿔 둡니다.
 
-## 보호자에게 보내는 링크
+### 보호자에게 보내는 링크 (server 방식)
 
 ```
 https://<계정>.github.io/growth-survey/followup.html?id=GP-007&c=K7Q2MX&v=6&sex=여아
@@ -84,7 +107,7 @@ https://<계정>.github.io/growth-survey/followup.html?id=GP-007&c=K7Q2MX&v=6&se
 - 링크 없이 들어오면 연구 번호와 참여 코드를 직접 입력해야 시작할 수 있습니다.
 - 참여를 끝낸 대상자는 `participants` 탭의 `active`를 `FALSE`로 바꾸면 더 이상 제출할 수 없습니다.
 
-## 시트에 저장되는 방식
+### 시트에 저장되는 방식 (server 방식)
 
 - 탭 이름은 `설문종류_버전`입니다(`baseline_0.3`, `followup_0.3`, `scales_0.3`). `FORM_VERSION`을 올리면 새 탭이 생겨 버전이 다른 응답의 열이 섞이지 않습니다.
 - 응답 1건 = 1행. 앞쪽 고정 열: `receipt`(접수번호), `server_time`, `form`, `form_version`, `participant_id`, `visit_month`, `started_at`, `submitted_at`, `duplicate_of`.
@@ -113,12 +136,12 @@ https://<계정>.github.io/growth-survey/followup.html?id=GP-007&c=K7Q2MX&v=6&se
 3. `config.js`의 `FORM_VERSION`을 올리고, 자료사전과 `CHANGELOG.md`도 고칩니다.
 4. Apps Script 편집기에 새 `Code.gs`를 붙여 넣고(맨 위 `STUDY_KEY` 다시 입력), **배포 관리 → 편집 → 새 버전**으로 재배포합니다. 웹 앱 URL은 그대로입니다.
 
-## 첫 방문 척도 (v0.4)
+## 첫 방문 척도 (v0.4~)
 
 척도 3종(스마트폰 과의존 9문항, CSHQ 한국어판 52번까지, 영양지수(학령기 어린이, 식약처 공식 개정판) 19문항)은 **첫 방문에 한 번, 보호자가 종이로** 작성합니다(2026-10-28 결정).
 1. 보호자에게 「첫방문_척도설문지_v0.2.docx」를 인쇄해 드립니다(연구 번호를 위에 적음).
 2. 연구진이 `scales.html?id=GP-007&c=참여코드`를 열고 체크된 번호를 그대로 입력합니다. 빈 문항과 두 칸 체크 문항은 비워 두고 메모에 적습니다.
-3. 마지막 화면에서 자동 채점 결과를 확인하고 제출합니다. 시트 `scales_0.4` 탭에 원응답과 점수가 함께 저장됩니다.
+3. 마지막 화면에서 자동 채점 결과를 확인하고 제출합니다. 원응답과 점수가 함께 iPad에 저장되고, 자료 관리의 "척도 입력 CSV"로 내보냅니다.
 
 - 화면과 저장소에는 척도 원문을 싣지 않습니다(문항 번호와 짧은 표지만). 공개 저장소에 원문을 넣지 마세요.
 - 채점 규칙은 `assets/js/scoring.js`와 「첫방문_척도_채점입력안내_v0.3.docx」에 있습니다. 영양지수 점수는 공식 가중치·등급 기준을 받을 때까지 비워 두고(`NQ_WEIGHTS_READY = false`) 원응답만 저장합니다. 하위척도·총점은 결측 문항이 하나라도 있으면 비워 둡니다. 원응답이 남아 있으므로 규칙을 바꾸면 다시 계산할 수 있습니다.

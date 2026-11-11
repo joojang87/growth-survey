@@ -1,5 +1,5 @@
 /*
- * 문항 정의 — CRF 자료사전 v0.3 (2026-11-04)
+ * 문항 정의 — CRF 자료사전 v0.5 (2026-11-11)
  * 문항을 고칠 때는 이 파일만 수정하세요. id는 자료사전의 변수명과 같아야 합니다.
  *
  * t(유형): single 하나 고르기 | multi 여러 개 고르기 | number 숫자 | text 글
@@ -24,10 +24,10 @@ SECTIONS: [
 
 /* ---------- 시작 ---------- */
 { key: 'intro', forms: ['baseline', 'followup'], title: '시작하기',
-  lead: { baseline: '처음 한 번만 답하는 설문입니다. 아이가 태어날 때부터 지금까지의 생활을 여쭙니다. 약 20–25분 걸리고, 중간에 닫아도 이 기기에서 이어서 할 수 있습니다.',
-          followup: '3개월마다 방문 1주 전에 받는 설문입니다. 모든 질문은 "지난 7일"을 기준으로 답해 주세요. 약 10분 걸립니다.' },
+  lead: { baseline: '처음 한 번만 답하는 설문입니다. 아이가 태어날 때부터 지금까지의 생활을 여쭙니다. 약 20–25분 걸립니다.',
+          followup: '3개월마다 외래 방문 때 받는 설문입니다. 모든 질문은 "지난 7일"을 기준으로 답해 주세요. 약 10분 걸립니다.' },
   qs: [
-  { id: 'participant_id', t: 'text', q: '연구 번호', h: '연구진이 알려 드린 번호입니다(예: GP-007). 문자로 받은 링크로 들어오셨다면 이미 채워져 있습니다.', ph: 'GP-000', p: '핵심', fromUrl: 'id', meta: true },
+  { id: 'participant_id', t: 'text', q: '연구 번호', h: '연구진이 입력해 드립니다(예: GP-007).', ph: 'GP-000', p: '핵심', fromUrl: 'id', meta: true },
   { id: 'access_code', t: 'text', q: '참여 코드', h: '연구진이 알려 드린 6자리 코드입니다. 링크로 들어오셨다면 이미 채워져 있습니다.', ph: '예: K7Q2MX', p: '핵심', fromUrl: 'c', secret: true, show: () => !!(window.SURVEY_CONFIG.REQUIRE_CODE && window.SURVEY_CONFIG.SUBMIT_URL) },
   { id: 'visit_month', t: 'single', q: '이번 방문은 등록 후 몇 개월째인가요?', o: ['3','6','9','12','15','18','21','24','27','30','33','36'], suffix: '개월', p: '핵심', forms: ['followup'], fromUrl: 'v', meta: true, },
   { id: 'respondent', t: 'single', q: '응답하시는 분은 아이와 어떤 관계인가요?', o: ['어머니', '아버지', '조부모', '기타'], p: '핵심' },
