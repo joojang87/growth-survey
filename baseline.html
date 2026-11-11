@@ -7,6 +7,10 @@
 <title>첫 방문 설문 · 성장·사춘기 코호트</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=IBM+Plex+Mono&family=IBM+Plex+Sans+KR:wght@400;600&display=swap">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="성장코호트">
+<link rel="apple-touch-icon" href="assets/icon-180.png">
 <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body data-form="baseline">
@@ -38,6 +42,8 @@
 <script src="assets/js/questions.js"></script>
 <script src="assets/js/scoring.js"></script>
 <script src="assets/js/flatten.js"></script>
+<script src="assets/js/localstore.js"></script>
 <script src="assets/js/survey.js"></script>
+<script>if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(() => {});</script>
 </body>
 </html>

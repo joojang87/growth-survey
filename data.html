@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>자료 관리(연구진) · 성장·사춘기 코호트</title>
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="성장코호트">
+<link rel="apple-touch-icon" href="assets/icon-180.png">
+<link rel="stylesheet" href="assets/css/style.css">
+<style>
+.wrap { max-width: 980px; margin: 0 auto; padding: 24px 16px 64px; display: flex; flex-direction: column; gap: 16px; }
+.panel { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r, 14px); padding: 16px; display: flex; flex-direction: column; gap: 10px; }
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; }
+.stat { border: 1px solid var(--line); border-radius: 12px; padding: 12px; }
+.stat b { display: block; font-size: 26px; }
+.warn { background: var(--mark-soft); border: 1px solid var(--mark); border-radius: 12px; padding: 12px; font-size: 14.5px; }
+.ok { background: var(--accent-soft); border-radius: 12px; padding: 12px; font-size: 14.5px; }
+.tblwrap { overflow-x: auto; }
+table.list { border-collapse: collapse; width: 100%; font-size: 13.5px; }
+table.list th, table.list td { border-bottom: 1px solid var(--line); padding: 6px 8px; text-align: left; white-space: nowrap; }
+table.list th { color: var(--muted); font-weight: 600; }
+.dup { color: var(--mark); font-weight: 600; }
+.row { display: flex; gap: 8px; align-items: center; }
+.wrapflex { flex-wrap: wrap; }
+.btn.danger { color: var(--danger); border-color: var(--danger); }
+#gate { max-width: 360px; margin: 18vh auto 0; }
+#gate input { font: inherit; font-size: 22px; letter-spacing: .3em; text-align: center; padding: 10px; border-radius: 12px; border: 1px solid var(--line); background: var(--bg); color: var(--ink); width: 100%; }
+.muted { color: var(--muted); }
+</style>
+</head>
+<body>
+<div id="gate" class="panel" hidden>
+  <h1 style="margin:0;font-size:20px">연구진 자료 관리</h1>
+  <p class="muted" style="margin:0">연구진 번호를 입력하세요.</p>
+  <input id="pin" type="password" inputmode="numeric" autocomplete="off" aria-label="연구진 번호">
+  <p id="pinmsg" class="muted" hidden style="margin:0;color:var(--danger)">번호가 맞지 않습니다.</p>
+  <button type="button" class="btn primary" id="pinok">열기</button>
+  <a class="muted" href="index.html">← 처음 화면</a>
+</div>
+
+<div id="app" class="wrap" hidden>
+  <div class="row" style="justify-content:space-between">
+    <div>
+      <p class="muted" style="margin:0">성장·사춘기 코호트 · 연구진용</p>
+      <h1 style="margin:2px 0 0;font-size:24px">이 iPad에 저장된 응답</h1>
+    </div>
+    <a class="btn" href="index.html">처음 화면</a>
+  </div>
+
+  <div id="envmsg"></div>
+
+  <div class="stats" id="stats"></div>
+
+  <section class="panel">
+    <h2 style="margin:0;font-size:18px">내보내기</h2>
+    <p class="muted" style="margin:0">설문 종류별 CSV(엑셀에서 열림)와 전체 백업(JSON)을 만듭니다. iPad에서는 공유 화면이 열리면 <b>"파일에 저장"</b>을 눌러 원하는 위치에 저장한 뒤, 원내 보안 저장공간으로 옮겨 주세요.</p>
+    <div class="row wrapflex">
+      <button type="button" class="btn primary" data-csv="baseline">첫 방문 CSV</button>
+      <button type="button" class="btn primary" data-csv="followup">정기 CSV</button>
+      <button type="button" class="btn primary" data-csv="scales">척도 입력 CSV</button>
+      <button type="button" class="btn" id="json">전체 백업 JSON</button>
+    </div>
+    <p id="expmsg" class="muted" style="margin:0" aria-live="polite"></p>
+  </section>
+
+  <section class="panel">
+    <div class="row" style="justify-content:space-between">
+      <h2 style="margin:0;font-size:18px">응답 목록</h2>
+      <button type="button" class="btn danger" id="purge">내보낸 응답 지우기</button>
+    </div>
+    <div class="tblwrap"><table class="list" id="list"></table></div>
+  </section>
+  <p class="muted">이 화면의 자료는 이 iPad의 이 웹 앱 안에만 있습니다. 다른 기기나 Safari 탭과 공유되지 않습니다.</p>
+</div>
+
+<script src="assets/js/config.js"></script>
+<script src="assets/js/questions.js"></script>
+<script src="assets/js/scoring.js"></script>
+<script src="assets/js/flatten.js"></script>
+<script src="assets/js/localstore.js"></script>
+<script>
+(function () {
+'use strict';
+const CFG = window.SURVEY_CONFIG, L = window.SURVEY_LOCAL, F = window.SURVEY_FLATTEN, SECTIONS = window.SURVEY.SECTIONS;
+const $ = s => document.querySelector(s);
+const FORMS = { baseline: '첫 방문', followup: '정기', scales: '척도 입력' };
+const META = ['receipt', 'saved_at', 'form', 'form_version', 'participant_id', 'visit_month', 'started_at', 'submitted_at', 'duplicate_of'];
+let RECS = [];
+
+/* ---------- 연구진 번호 ---------- */
+function gate() {
+  const passed = (() => { try { return sessionStorage.getItem('gs_staff') === '1'; } catch (e) { return false; } })();
+  if (!CFG.STAFF_PIN || passed) { start(); return; }
+  $('#gate').hidden = false; $('#pin').focus();
+  const go = () => {
+    if ($('#pin').value === String(CFG.STAFF_PIN)) { try { sessionStorage.setItem('gs_staff', '1'); } catch (e) {} $('#gate').hidden = true; start(); }
+    else { $('#pinmsg').hidden = false; $('#pin').value = ''; }
+  };
+  $('#pinok').addEventListener('click', go);
+  $('#pin').addEventListener('keydown', e => { if (e.key === 'Enter') go(); });
+}
+
+/* ---------- 화면 ---------- */
+async function start() {
+  $('#app').hidden = false;
+  const standalone = window.navigator.standalone === true || matchMedia('(display-mode: standalone)').matches;
+  const persisted = await L.persisted() || await L.persist();
+  const env = $('#envmsg'); env.innerHTML = '';
+  if (!standalone) env.append(Object.assign(document.createElement('div'), { className: 'warn', innerHTML: '<b>홈 화면 앱으로 열어 주세요.</b> 지금은 Safari 탭에서 열려 있습니다. Safari 탭의 저장 자료는 7일 넘게 이 사이트를 열지 않으면 지워질 수 있고, 홈 화면 앱과 저장공간이 서로 다릅니다. 공유 버튼 → "홈 화면에 추가"로 설치한 아이콘으로만 설문을 받으세요.' }));
+  else env.append(Object.assign(document.createElement('div'), { className: 'ok', textContent: `홈 화면 앱으로 실행 중입니다.${persisted ? ' 저장공간 유지(persist) 허용됨.' : ''} 그래도 응답은 정기적으로 내보내 원내 저장공간에 보관하세요.` }));
+  await reload();
+}
+
+async function reload() {
+  RECS = await L.all();
+  const st = $('#stats'); st.innerHTML = '';
+  const card = (lab, n, sub) => { const d = document.createElement('div'); d.className = 'stat'; d.innerHTML = `<span class="muted">${lab}</span><b>${n}</b><span class="muted">${sub || ''}</span>`; st.append(d); };
+  card('전체 응답', RECS.length, `내보내지 않음 ${RECS.filter(r => !r.exported_at).length}`);
+  Object.entries(FORMS).forEach(([f, lab]) => { const a = RECS.filter(r => r.form === f); card(lab, a.length, `내보내지 않음 ${a.filter(r => !r.exported_at).length}`); });
+  const t = $('#list'); t.innerHTML = '';
+  const head = document.createElement('tr');
+  ['접수번호', '연구 번호', '설문', '방문(개월)', '저장 시각', '중복', '내보냄'].forEach(x => { const th = document.createElement('th'); th.textContent = x; head.append(th); });
+  t.append(head);
+  RECS.slice().reverse().forEach(r => {
+    const tr = document.createElement('tr');
+    [r.receipt, r.participant_id, FORMS[r.form] || r.form, r.visit_month, fmt(r.saved_at), r.duplicate_of ? '중복(' + r.duplicate_of + ')' : '', r.exported_at ? fmt(r.exported_at) : '—']
+      .forEach((x, i) => { const td = document.createElement('td'); td.textContent = x; if (i === 5 && x) td.className = 'dup'; tr.append(td); });
+    t.append(tr);
+  });
+  if (!RECS.length) { const tr = document.createElement('tr'); tr.innerHTML = '<td colspan="7" class="muted">저장된 응답이 없습니다.</td>'; t.append(tr); }
+}
+const fmt = iso => { if (!iso) return ''; const d = new Date(iso); const p = n => String(n).padStart(2, '0'); return `${d.getFullYear()}-${p(d.getMonth() + 1)}-${p(d.getDate())} ${p(d.getHours())}:${p(d.getMinutes())}`; };
+
+/* ---------- 내보내기 ---------- */
+const esc = v => { const s = v === undefined || v === null ? '' : String(v); return /[",\n\r]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s; };
+function csvOf(form) {
+  const cols = F.columnsFor(SECTIONS, form);
+  const head = META.concat(cols, ['raw_json']);
+  const rows = RECS.filter(r => r.form === form).map(r => {
+    const row = r.row || {};
+    return META.map(k => r[k]).concat(cols.map(c => row[c]), [JSON.stringify({ answers: r.answers, form_version: r.form_version })]);
+  });
+  return { text: '﻿' + [head].concat(rows).map(a => a.map(esc).join(',')).join('\r\n'), n: rows.length };
+}
+async function save(name, text, type, uids) {
+  const blob = new Blob([text], { type });
+  const file = new File([blob], name, { type });
+  try {
+    if (navigator.canShare && navigator.canShare({ files: [file] })) {
+      await navigator.share({ files: [file], title: name });
+    } else {
+      const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = name;
+      document.body.append(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(a.href), 4000);
+    }
+  } catch (e) {
+    if (e && e.name === 'AbortError') { $('#expmsg').textContent = '내보내기를 취소했습니다.'; return; }
+    $('#expmsg').textContent = '내보내지 못했습니다: ' + (e && e.message || e); return;
+  }
+  if (uids.length) await L.markExported(uids, new Date().toISOString());
+  $('#expmsg').textContent = `${name} (${uids.length}건)을 만들었습니다. 파일 앱에 저장되었는지 확인해 주세요.`;
+  await reload();
+}
+document.querySelectorAll('[data-csv]').forEach(b => b.addEventListener('click', async () => {
+  const f = b.dataset.csv, c = csvOf(f);
+  if (!c.n) { $('#expmsg').textContent = `${FORMS[f]} 응답이 없습니다.`; return; }
+  await save(`growth-survey_${f}_v${CFG.FORM_VERSION}_${L.stamp(new Date())}.csv`, c.text, 'text/csv', RECS.filter(r => r.form === f).map(r => r.uid));
+}));
+$('#json').addEventListener('click', async () => {
+  if (!RECS.length) { $('#expmsg').textContent = '응답이 없습니다.'; return; }
+  await save(`growth-survey_backup_${L.stamp(new Date())}.json`, JSON.stringify({ exported_at: new Date().toISOString(), form_version: CFG.FORM_VERSION, records: RECS }, null, 1), 'application/json', []);
+});
+$('#purge').addEventListener('click', async () => {
+  const done = RECS.filter(r => r.exported_at);
+  if (!done.length) { alert('지울 수 있는 응답(내보낸 응답)이 없습니다.'); return; }
+  if (!confirm(`내보낸 응답 ${done.length}건을 이 iPad에서 지웁니다. 원내 저장공간에 CSV를 옮겨 둔 것을 확인하셨나요?`)) return;
+  if (!confirm('지운 응답은 되살릴 수 없습니다. 지울까요?')) return;
+  await L.remove(done.map(r => r.uid)); await reload();
+});
+
+if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(() => {});
+gate();
+})();
+</script>
+</body>
+</html>

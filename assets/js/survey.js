@@ -6,6 +6,7 @@ const { SECTIONS, WD, SPORTS, INTENSITY } = window.SURVEY;
 const FORM = document.body.dataset.form;               // 'baseline' | 'followup' | 'scales'(연구진 척도 입력)
 const URLP = new URLSearchParams(location.search);
 const DEMO = CFG.MODE !== 'live' || URLP.get('debug') === '1';
+const LOCAL_MODE = CFG.SAVE_MODE === 'device' && !!window.SURVEY_LOCAL;
 const S = {};
 const META = { started_at: new Date().toISOString() };
 let cur = 0;
@@ -27,7 +28,15 @@ const h = (tag, attrs = {}, kids = []) => {
 const pick = v => (v && typeof v === 'object' && !Array.isArray(v) && (v.baseline || v.followup)) ? (v[FORM] ?? '') : v;
 const store = {
   key: () => `gsurvey:${FORM}:${URLP.get('id') || 'local'}`,
-  load() { if (!CFG.SAVE_DRAFT) return null; try { return JSON.parse(localStorage.getItem(this.key()) || 'null'); } catch (e) { return null; } },
+  load() {
+    if (!CFG.SAVE_DRAFT) return null;
+    try {
+      const d = JSON.parse(localStorage.getItem(this.key()) || 'null');
+      // 공용 iPad: 오래된 작성 중 응답은 다음 보호자에게 보이지 않도록 버림
+      if (d && CFG.DRAFT_MAX_MIN && Date.now() - (d.saved_at || 0) > CFG.DRAFT_MAX_MIN * 60000) { this.clear(); return null; }
+      return d;
+    } catch (e) { return null; }
+  },
   save() { if (!CFG.SAVE_DRAFT) return; try { localStorage.setItem(this.key(), JSON.stringify({ S, META, cur, saved_at: Date.now() })); } catch (e) {} },
   clear() { try { localStorage.removeItem(this.key()); } catch (e) {} },
 };
@@ -399,7 +408,10 @@ async function submit() {
   const data = payload();
   const btn = $('#next'); btn.disabled = true; btn.textContent = '보내는 중…';
   let res = null;                                        // null = 데모(전송 안 함)
-  if (CFG.SUBMIT_URL) {
+  if (LOCAL_MODE) {
+    try { const rec = await window.SURVEY_LOCAL.add(data); res = { ok: true, receipt: rec.receipt, local: true, duplicate: !!rec.duplicate_of }; }
+    catch (e) { res = { ok: false, error: 'local' }; }
+  } else if (CFG.SUBMIT_URL) {
     try {
       // text/plain으로 보내면 사전 요청(preflight)이 생기지 않아 Apps Script와 호환됩니다.
       const r = await fetch(CFG.SUBMIT_URL, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' },
@@ -418,14 +430,15 @@ function done(data, res) {
   const main = $('#main'); main.innerHTML = '';
   $('#step').textContent = '완료'; $('#secname').textContent = sent === false ? '제출 실패' : '제출 완료';
   const json = JSON.stringify(data, null, 2);
-  const msg = sent === true ? `응답이 연구팀에 전달되었습니다. 참여해 주셔서 감사합니다.`
-    : sent === false ? (res.error === 'network' ? '인터넷 연결 문제로 보내지 못했습니다. 연결을 확인한 뒤 다시 제출해 주세요. 작성한 내용은 이 기기에 남아 있습니다.' : (ERR[res.error] || '보내지 못했습니다. 잠시 후 다시 시도해 주세요.'))
+  const msg = sent === true ? (res.local ? (FORM === 'scales' ? '이 기기에 저장되었습니다.' : '응답이 저장되었습니다. 참여해 주셔서 감사합니다. 이 iPad를 연구진에게 돌려주세요.') : `응답이 연구팀에 전달되었습니다. 참여해 주셔서 감사합니다.`)
+    : sent === false ? (res.error === 'local' ? '이 기기에 저장하지 못했습니다. 연구진에게 알려 주세요(개인정보 보호 모드나 저장공간 부족일 수 있습니다). 작성한 내용은 화면에 남아 있습니다.' : res.error === 'network' ? '인터넷 연결 문제로 보내지 못했습니다. 연결을 확인한 뒤 다시 제출해 주세요. 작성한 내용은 이 기기에 남아 있습니다.' : (ERR[res.error] || '보내지 못했습니다. 잠시 후 다시 시도해 주세요.'))
     : '저장 주소가 설정되지 않은 데모 모드라 응답을 보내지 않았습니다. 아래는 Google 시트에 저장될 내용입니다.';
   main.append(h('header', { class: 'sechead' }, [
     h('p', { class: 'eyebrow', text: sent === false ? '전송 실패' : sent ? '제출 완료' : '데모 모드' }),
     h('h2', { text: sent === false ? '다시 시도해 주세요' : '감사합니다' }),
     h('p', { class: 'lead', text: msg })]));
-  if (sent === true && res.receipt) main.append(h('section', { class: 'q done' }, [h('p', { class: 'help', text: '접수번호' }), h('p', { class: 'big', text: res.receipt })]));
+  if (sent === true && res.receipt) main.append(h('section', { class: 'q done' }, [h('p', { class: 'help', text: '접수번호' }), h('p', { class: 'big', text: res.receipt }),
+    ...(res.duplicate ? [h('p', { class: 'help', text: '같은 연구 번호·방문의 응답이 이미 있어 "중복"으로 표시해 저장했습니다(연구진 확인용).' })] : [])]));
   if (sent === false) {
     const re = h('button', { type: 'button', class: 'btn primary', text: '다시 제출' }); re.addEventListener('click', submit);
     const back = h('button', { type: 'button', class: 'btn', text: '응답 고치기' }); back.addEventListener('click', () => show(0));
@@ -458,6 +471,7 @@ function toc() {
 document.addEventListener('DOMContentLoaded', () => {
   document.title = `${{ baseline: '첫 방문 설문', followup: '정기 설문', scales: '첫 방문 척도 입력(연구진)' }[FORM]} · ${CFG.STUDY_NAME}`;
   if (DEMO) document.body.classList.add('demo');
+  if (LOCAL_MODE) window.SURVEY_LOCAL.persist();
   // 링크로 받은 값 채우기 (예: followup.html?id=KY-0007&v=6&sex=여아)
   SECTIONS.forEach(sec => sec.qs.forEach(q => { if (q.fromUrl && URLP.get(q.fromUrl)) S[q.id] = URLP.get(q.fromUrl); }));
   const draft = store.load();
